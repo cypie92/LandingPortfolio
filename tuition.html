@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TuitionTracker - Attendance System</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#174c82",
+                        "primary-dark": "#0f365d",
+                        "secondary": "#537393",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#121920",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e2936",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans", "sans-serif"],
+                        "sans": ["Work Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.375rem", 
+                        "md": "0.375rem",
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(23, 76, 130, 0.08)',
+                        'card': '0 2px 10px rgba(0, 0, 0, 0.03)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Work Sans', sans-serif;
+        }
+        /* Hide scrollbar for clean look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#0f141a] dark:text-[#f8fafb] min-h-screen flex flex-col font-display antialiased">
+<!-- Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-[#e8edf2] dark:border-gray-800 bg-surface-light/95 dark:bg-surface-dark/95 backdrop-blur-sm">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<!-- Logo -->
+<div class="flex items-center gap-2">
+<div class="flex items-center justify-center w-8 h-8 rounded bg-primary text-white">
+<span class="material-symbols-outlined text-[20px]">school</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-primary dark:text-white">TuitionTracker</span>
+</div>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-sm font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-white transition-colors" href="#">Features</a>
+<a class="text-sm font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-white transition-colors" href="#">Pricing</a>
+<a class="text-sm font-medium text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-white transition-colors" href="#">Support</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center gap-4">
+<button class="text-sm font-bold text-primary dark:text-white hover:underline decoration-2 underline-offset-4 hidden sm:block">
+                        Login
+                    </button>
+<button class="bg-primary hover:bg-primary-dark text-white text-sm font-bold py-2 px-4 rounded transition-colors shadow-sm flex items-center gap-2">
+<span>Register Center</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="relative pt-12 pb-20 lg:pt-24 lg:pb-32 overflow-hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+<!-- Hero Content -->
+<div class="flex-1 text-center lg:text-left">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-6">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                            Trusted by 500+ Centers
+                        </div>
+<h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] text-[#0f141a] dark:text-white mb-6">
+                            Effortless Attendance <br class="hidden lg:block"/>Tracking for Tuition Centers
+                        </h1>
+<p class="text-lg text-secondary dark:text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                            Secure, reliable, and real-time. Bridge the gap between classrooms and parents with our automated student monitoring system designed for modern educators.
+                        </p>
+<div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+<button class="w-full sm:w-auto bg-primary hover:bg-primary-dark text-white text-base font-bold py-3.5 px-8 rounded shadow-lg shadow-primary/20 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+                                Student Check-In
+                            </button>
+<button class="w-full sm:w-auto bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 text-[#0f141a] dark:text-white text-base font-bold py-3.5 px-8 rounded hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">play_circle</span>
+                                Watch Demo
+                            </button>
+</div>
+<div class="mt-8 flex items-center justify-center lg:justify-start gap-6 text-sm text-secondary dark:text-gray-500 font-medium">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-green-600">check_circle</span>
+<span>Free 14-day trial</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-green-600">check_circle</span>
+<span>No credit card required</span>
+</div>
+</div>
+</div>
+<!-- Hero Visual / Dashboard Preview -->
+<div class="flex-1 w-full max-w-xl lg:max-w-none perspective-1000">
+<div class="relative bg-white dark:bg-surface-dark rounded-xl shadow-soft border border-gray-100 dark:border-gray-700 p-6 sm:p-8 transform transition-transform hover:scale-[1.01] duration-500">
+<!-- Dashboard Header -->
+<div class="flex justify-between items-center mb-8 pb-4 border-b border-gray-100 dark:border-gray-800">
+<div>
+<h3 class="text-lg font-bold text-[#0f141a] dark:text-white">Live Dashboard</h3>
+<p class="text-xs text-secondary dark:text-gray-400">Class 10B - Mathematics</p>
+</div>
+<div class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                                    Live Session
+                                </div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<!-- Attendance Chart -->
+<div class="flex flex-col items-center justify-center p-4 bg-background-light dark:bg-gray-800/50 rounded-lg">
+<div class="relative w-32 h-32 mb-4">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-gray-200 dark:text-gray-700" cx="64" cy="64" fill="transparent" r="56" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-primary" cx="64" cy="64" fill="transparent" r="56" stroke="currentColor" stroke-dasharray="351.86" stroke-dashoffset="35.18" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-3xl font-bold text-[#0f141a] dark:text-white">92%</span>
+<span class="text-[10px] text-secondary uppercase font-semibold">Present</span>
+</div>
+</div>
+<p class="text-sm font-medium text-center text-[#0f141a] dark:text-white">High Attendance</p>
+<p class="text-xs text-secondary dark:text-gray-400 text-center">+4% vs last week</p>
+</div>
+<!-- Recent Activity List -->
+<div class="flex flex-col gap-3">
+<h4 class="text-xs font-bold text-secondary dark:text-gray-400 uppercase tracking-wider mb-1">Recent Check-ins</h4>
+<!-- Item 1 -->
+<div class="flex items-center gap-3 p-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+<div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs font-bold">JD</div>
+<div class="flex-1">
+<p class="text-sm font-semibold text-[#0f141a] dark:text-white">John Doe</p>
+<p class="text-xs text-secondary">Check-in via RFID</p>
+</div>
+<span class="text-xs font-medium text-green-600">08:58 AM</span>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center gap-3 p-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+<div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold">SM</div>
+<div class="flex-1">
+<p class="text-sm font-semibold text-[#0f141a] dark:text-white">Sarah M.</p>
+<p class="text-xs text-secondary">Check-in via App</p>
+</div>
+<span class="text-xs font-medium text-green-600">09:01 AM</span>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center gap-3 p-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors opacity-60">
+<div class="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-xs font-bold">AL</div>
+<div class="flex-1">
+<p class="text-sm font-semibold text-[#0f141a] dark:text-white">Alex L.</p>
+<p class="text-xs text-secondary">Late Arrival</p>
+</div>
+<span class="text-xs font-medium text-orange-600">09:15 AM</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating decorative elements -->
+<div class="absolute -top-10 -right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+<div class="absolute -bottom-10 -left-10 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl -z-10"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="border-y border-[#e8edf2] dark:border-gray-800 bg-white dark:bg-surface-dark">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-transparent md:divide-gray-100 dark:md:divide-gray-800">
+<div class="flex flex-col items-center">
+<span class="text-3xl font-black text-primary dark:text-white mb-1">50k+</span>
+<span class="text-sm font-medium text-secondary">Students Tracked</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-3xl font-black text-primary dark:text-white mb-1">99.9%</span>
+<span class="text-sm font-medium text-secondary">Uptime Reliability</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-3xl font-black text-primary dark:text-white mb-1">2M+</span>
+<span class="text-sm font-medium text-secondary">SMS Alerts Sent</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-3xl font-black text-primary dark:text-white mb-1">4.9/5</span>
+<span class="text-sm font-medium text-secondary">User Rating</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Section -->
+<section class="py-20 lg:py-32 bg-background-light dark:bg-background-dark" id="features">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h2 class="text-3xl font-black text-[#0f141a] dark:text-white tracking-tight mb-4">Designed for the Entire Ecosystem</h2>
+<p class="text-secondary dark:text-gray-400 text-lg">We've built tools that solve specific problems for both the educators running the center and the parents ensuring their child's success.</p>
+</div>
+<div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+<!-- For Parents Card -->
+<div class="group bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-800 p-8 shadow-card hover:shadow-soft transition-all duration-300">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">family_restroom</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-[#0f141a] dark:text-white">For Parents</h3>
+<p class="text-sm text-secondary">Peace of mind, instantly.</p>
+</div>
+</div>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-green-50 dark:bg-green-900/10 text-green-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">notifications_active</span>
+</div>
+<div>
+<h4 class="text-base font-bold text-[#0f141a] dark:text-white mb-1">Real-time SMS Alerts</h4>
+<p class="text-sm text-secondary leading-relaxed">Receive instant notifications the moment your child enters or leaves the tuition center. No more guessing games.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-purple-50 dark:bg-purple-900/10 text-purple-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">monitoring</span>
+</div>
+<div>
+<h4 class="text-base font-bold text-[#0f141a] dark:text-white mb-1">Performance Tracking</h4>
+<p class="text-sm text-secondary leading-relaxed">View monthly attendance graphs and track consistency over time. Identify patterns before they become problems.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-orange-50 dark:bg-orange-900/10 text-orange-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">shield</span>
+</div>
+<div>
+<h4 class="text-base font-bold text-[#0f141a] dark:text-white mb-1">Safety First</h4>
+<p class="text-sm text-secondary leading-relaxed">Know exactly where your child is during tuition hours with verified check-in data.</p>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-gray-100 dark:border-gray-800">
+<a class="inline-flex items-center text-sm font-bold text-primary dark:text-white hover:underline decoration-2 underline-offset-4" href="#">
+                                Download Parent App
+                                <span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- For Teachers Card -->
+<div class="group bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-800 p-8 shadow-card hover:shadow-soft transition-all duration-300">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-lg bg-primary/10 text-primary dark:text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">school</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-[#0f141a] dark:text-white">For Teachers</h3>
+<p class="text-sm text-secondary">Focus on teaching, not admin.</p>
+</div>
+</div>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-indigo-50 dark:bg-indigo-900/10 text-indigo-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">touch_app</span>
+</div>
+<div>
+<h4 class="text-base font-bold text-[#0f141a] dark:text-white mb-1">One-Click Attendance</h4>
+<p class="text-sm text-secondary leading-relaxed">Take digital attendance in seconds. Works with RFID cards, QR codes, or simple manual taps on a tablet.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-teal-50 dark:bg-teal-900/10 text-teal-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">description</span>
+</div>
+<div>
+<h4 class="text-base font-bold text-[#0f141a] dark:text-white mb-1">Automated Reports</h4>
+<p class="text-sm text-secondary leading-relaxed">Generate PDF reports for individual students or entire classes with a single click. Ready for parent-teacher meetings.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-rose-50 dark:bg-rose-900/10 text-rose-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">manage_accounts</span>
+</div>
+<div>
+<h4 class="text-base font-bold text-[#0f141a] dark:text-white mb-1">Fee Management</h4>
+<p class="text-sm text-secondary leading-relaxed">Integrated fee tracking reminds parents automatically when tuition payments are due.</p>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-gray-100 dark:border-gray-800">
+<a class="inline-flex items-center text-sm font-bold text-primary dark:text-white hover:underline decoration-2 underline-offset-4" href="#">
+                                View Teacher Dashboard
+                                <span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-20 bg-primary relative overflow-hidden">
+<!-- Abstract Background Pattern -->
+<div class="absolute inset-0 opacity-10">
+<svg class="h-full w-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0 100 C 20 0 50 0 100 100 Z" fill="white"></path>
+</svg>
+</div>
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+<h2 class="text-3xl md:text-4xl font-black text-white mb-6">Ready to modernize your tuition center?</h2>
+<p class="text-blue-100 text-lg mb-10 max-w-2xl mx-auto">Join hundreds of centers that are saving time and building trust with parents. Get started in less than 5 minutes.</p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<button class="w-full sm:w-auto bg-white text-primary text-base font-bold py-3.5 px-8 rounded shadow-lg hover:bg-gray-50 transition-colors">
+                        Start Free Trial
+                    </button>
+<button class="w-full sm:w-auto bg-transparent border border-blue-300 text-white text-base font-bold py-3.5 px-8 rounded hover:bg-blue-800/50 transition-colors">
+                        Talk to Sales
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-surface-dark border-t border-gray-200 dark:border-gray-800 pt-16 pb-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
+<div class="col-span-2 lg:col-span-2">
+<div class="flex items-center gap-2 mb-4">
+<div class="flex items-center justify-center w-6 h-6 rounded bg-primary text-white">
+<span class="material-symbols-outlined text-[14px]">school</span>
+</div>
+<span class="text-lg font-bold text-[#0f141a] dark:text-white">TuitionTracker</span>
+</div>
+<p class="text-sm text-secondary dark:text-gray-400 max-w-xs mb-6">
+                        The leading attendance and management solution for tuition centers, coaching classes, and private tutors.
+                    </p>
+<div class="flex gap-4">
+<a class="text-gray-400 hover:text-primary transition-colors" href="#">
+<span class="sr-only">Facebook</span>
+<svg class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+</a>
+<a class="text-gray-400 hover:text-primary transition-colors" href="#">
+<span class="sr-only">Twitter</span>
+<svg class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-sm font-bold text-[#0f141a] dark:text-white uppercase tracking-wider mb-4">Product</h3>
+<ul class="space-y-3">
+<li><a class="text-sm text-secondary hover:text-primary dark:hover:text-white transition-colors" href="#">Features</a></li>
+<li><a class="text-sm text-secondary hover:text-primary dark:hover:text-white transition-colors" href="#">Pricing</a></li>
+<li><a class="text-sm text-secondary hover:text-primary dark:hover:text-white transition-colors" href="#">Hardware</a></li>
+<li><a class="text-sm text-secondary hover:text-primary dark:hover:text-white transition-colors" href="#">Integrations</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-sm font-bold text-[#0f141a] dark:text-white uppercase tracking-wider mb-4">Support</h3>
+<ul class="space-y-3">
+<li><a class="text-sm text-secondary hover:text-primary dark:hover:text-white transition-colors" href="#">Help Center</a></li>
+<li><a class="text-sm text-secondary hover:text-primary dark:hover:text-white transition-colors" href="#">API Docs</a></li>
+<li><a class="text-sm text-secondary hover:text-primary dark:hover:text-white transition-colors" href="#">Contact Us</a></li>
+<li><a class="text-sm text-secondary hover:text-primary dark:hover:text-white transition-colors" href="#">System Status</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-sm font-bold text-[#0f141a] dark:text-white uppercase tracking-wider mb-4">Company</h3>
+<ul class="space-y-3">
+<li><a class="text-sm text-secondary hover:text-primary dark:hover:text-white transition-colors" href="#">About</a></li>
+<li><a class="text-sm text-secondary hover:text-primary dark:hover:text-white transition-colors" href="#">Blog</a></li>
+<li><a class="text-sm text-secondary hover:text-primary dark:hover:text-white transition-colors" href="#">Careers</a></li>
+<li><a class="text-sm text-secondary hover:text-primary dark:hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-100 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-xs text-secondary dark:text-gray-500">© 2023 TuitionTracker Inc. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-xs text-secondary hover:text-primary dark:hover:text-white transition-colors" href="#">Terms</a>
+<a class="text-xs text-secondary hover:text-primary dark:hover:text-white transition-colors" href="#">Privacy</a>
+<a class="text-xs text-secondary hover:text-primary dark:hover:text-white transition-colors" href="#">Cookies</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

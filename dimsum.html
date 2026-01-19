@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dragon Dumpling - Traditional Dim Sum</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c32222",
+                        "accent": "#C09B4E",
+                        "background-light": "#fbfaf8",
+                        "background-dark": "#1c1a17",
+                        "stone-paper": "#f0ede6",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Serif", "serif"],
+                        "sans": ["Noto Serif", "serif"], 
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "md": "0.5rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                    backgroundImage: {
+                        'dragon-pattern': "url('https://placeholder.pics/svg/800')", 
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for a premium feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fbfaf8;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C09B4E;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c32222;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#1a0f0f] antialiased overflow-x-hidden selection:bg-primary selection:text-white">
+<!-- Navigation -->
+<nav class="sticky top-0 z-50 w-full border-b border-[#eadddd] bg-background-light/95 backdrop-blur-md transition-all duration-300">
+<div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-12">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white">
+<span class="material-symbols-outlined text-2xl">ramen_dining</span>
+</div>
+<span class="text-xl font-black tracking-tight text-[#1a0f0f] dark:text-white">Dragon Dumpling</span>
+</div>
+<div class="hidden items-center gap-10 md:flex">
+<a class="text-sm font-bold uppercase tracking-widest text-[#1a0f0f]/80 hover:text-primary transition-colors" href="#menu">Menu</a>
+<a class="text-sm font-bold uppercase tracking-widest text-[#1a0f0f]/80 hover:text-primary transition-colors" href="#story">Story</a>
+<a class="text-sm font-bold uppercase tracking-widest text-[#1a0f0f]/80 hover:text-primary transition-colors" href="#private">Private Dining</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex h-11 items-center justify-center rounded-md bg-primary px-6 text-sm font-bold tracking-wider text-white shadow-lg transition-transform hover:scale-105 hover:bg-red-700 active:scale-95">
+                    RESERVE A TABLE
+                </button>
+<button class="flex md:hidden h-10 w-10 items-center justify-center rounded-md bg-[#1a0f0f]/5 text-[#1a0f0f]">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<div class="relative h-[85vh] w-full overflow-hidden bg-background-dark">
+<!-- Background Image simulating video frame -->
+<div class="absolute inset-0 z-0 bg-cover bg-center opacity-60 transition-transform duration-[20s] hover:scale-105 ease-linear" data-alt="Close up of bamboo steamer baskets releasing steam in a dark moody kitchen" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCQD8uCAYrm2D8bQsN90J5XPvNL2HnL1PHIiT4djO7d9TuZ2M2RfjudD-1ddXXJBWiugIlfOlCXyzgSyxF-EPRuHp92fipX_t6iCTJCOKuMfI4xM_BwVZBhn5_GmGIFcTOYhOZgh3lEaqKHUmxD6DtpC8_KqDi6E-WLl6mUw1mmnfn-LP_sEIxR12XM__g1Us8vhyU3AEBhV3j8MMlXY07KxSf8Xk7Ex3SDm-gaetxLPUB8lluteLIncb4rTv81tC8KTvt8rj6pQf0');">
+</div>
+<!-- Gradient Overlay -->
+<div class="absolute inset-0 z-10 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent"></div>
+<div class="relative z-20 flex h-full flex-col items-center justify-center px-6 text-center">
+<div class="mb-6 flex items-center gap-4 text-accent/80">
+<span class="h-[1px] w-12 bg-accent"></span>
+<span class="text-sm font-bold uppercase tracking-[0.2em]">Est. 1988</span>
+<span class="h-[1px] w-12 bg-accent"></span>
+</div>
+<h1 class="mx-auto max-w-4xl text-5xl font-black leading-tight text-white drop-shadow-sm md:text-7xl lg:text-8xl">
+                The Art of <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-stone-300 italic">Dim Sum</span>
+</h1>
+<p class="mt-6 max-w-lg text-lg text-white/90 font-light leading-relaxed md:text-xl">
+                Handcrafted daily using techniques passed down through generations of masters.
+            </p>
+<div class="mt-10 flex flex-col gap-4 sm:flex-row">
+<button class="group relative flex h-14 min-w-[200px] items-center justify-center gap-2 overflow-hidden rounded-md bg-primary px-8 text-base font-bold tracking-widest text-white shadow-xl transition-all hover:bg-white hover:text-primary">
+<span class="relative z-10">RESERVE A TABLE</span>
+</button>
+<button class="flex h-14 min-w-[200px] items-center justify-center rounded-md border border-white/30 bg-white/5 px-8 text-base font-bold tracking-widest text-white backdrop-blur-sm transition-all hover:bg-white hover:text-background-dark">
+                    VIEW MENU
+                </button>
+</div>
+</div>
+</div>
+<!-- Handcrafted Classics Section -->
+<section class="relative bg-background-light py-24 lg:py-32" id="menu">
+<div class="absolute top-0 left-1/2 h-24 w-[1px] -translate-x-1/2 bg-gradient-to-b from-accent to-transparent opacity-40"></div>
+<div class="container mx-auto max-w-6xl px-6">
+<div class="mb-20 text-center">
+<h2 class="text-accent text-sm font-bold uppercase tracking-[0.2em] mb-4">A Taste of Tradition</h2>
+<h3 class="text-4xl font-bold text-[#1a0f0f] md:text-5xl">Handcrafted Classics</h3>
+<div class="mx-auto mt-6 h-1 w-24 bg-primary"></div>
+</div>
+<div class="flex flex-col gap-16 md:gap-24">
+<!-- Item 1: Har Gow -->
+<div class="group flex flex-col gap-8 md:flex-row md:items-center md:gap-12">
+<div class="order-1 md:order-1 md:w-1/2 overflow-hidden rounded-lg shadow-2xl shadow-stone-200">
+<div class="aspect-[4/3] w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Translucent shrimp dumplings in a bamboo steamer" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCG5IMIO7hDbrKAMAia2hBD8aIslDT5ISXOTwl3igBK_w6Vpju5zMdDjwAXFTO3I5emIeg4k9Ek16aIw3k28M66ChFCnUXA--0n9Q6cu_5mEzvpBjJuM9JX3ve1_nsU_bsDrWzOgU-k1e3vFSJE74TdWr6_5gvp2JAHLdnc-NYE-lgH2YjC9b33ljb_Yn_s7Sxt-kuE5IjGs8W768L2hX-uV_QbrD45AkgD4EwFsh0fxGfEYyyUi-uTqKmnA1b_eIkJYJVjdXdh4Ts');"></div>
+</div>
+<div class="order-2 md:order-2 md:w-1/2 md:pl-8">
+<div class="flex items-baseline justify-between border-b border-accent/20 pb-4">
+<h4 class="text-2xl font-bold text-[#1a0f0f]">Har Gow</h4>
+<span class="text-xl font-medium text-primary">$12</span>
+</div>
+<p class="mt-4 text-lg leading-relaxed text-[#5a4a4a]">
+                            Known as the crown jewel of dim sum. Our translucent crystal wrappers are pleated thirteen times by hand, encasing fresh succulent shrimp and crisp bamboo shoots.
+                        </p>
+<div class="mt-6 flex gap-2">
+<span class="inline-flex items-center rounded-full bg-stone-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-stone-600">Shellfish</span>
+<span class="inline-flex items-center rounded-full bg-stone-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-stone-600">Steamed</span>
+</div>
+</div>
+</div>
+<!-- Item 2: Siu Mai (Reversed Layout) -->
+<div class="group flex flex-col gap-8 md:flex-row md:items-center md:gap-12">
+<div class="order-1 md:order-2 md:w-1/2 overflow-hidden rounded-lg shadow-2xl shadow-stone-200">
+<div class="aspect-[4/3] w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Open-faced pork and shrimp dumplings topped with bright orange roe" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD4NxH2iC0PvyuOD6J_un3rbRo6L4Obc9OVt4vWj0WSgexuVRXUJYvhDQJ-sFQRCrGa-cA-CI8dnO0ooDR3qssjjV3P-yGGSoif5aGjMTFonj6ctMpnByKHUFJu95CdyCH74dHWZ6C_iESyB7fM7lSWSNZ0_QPDreLTmcF3mfKHiGhlZQFMuOCOfgGjVRGfbVA9aRKvC6ASPQpBAx7ZSvgQ6_SViaosO6TJh59UURqFevhn7Bp_hTcD73XbzDtBmST2CegoUo-0wFk');"></div>
+</div>
+<div class="order-2 md:order-1 md:w-1/2 md:pr-8 text-right md:text-right">
+<div class="flex items-baseline justify-between border-b border-accent/20 pb-4 flex-row-reverse">
+<h4 class="text-2xl font-bold text-[#1a0f0f]">Siu Mai</h4>
+<span class="text-xl font-medium text-primary">$11</span>
+</div>
+<p class="mt-4 text-lg leading-relaxed text-[#5a4a4a]">
+                            A savory open-faced dumpling featuring a hand-chopped blend of Kurobuta pork and wild-caught shrimp, crowned with premium crab roe and shiitake mushroom.
+                        </p>
+<div class="mt-6 flex gap-2 justify-end">
+<span class="inline-flex items-center rounded-full bg-stone-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-stone-600">Pork</span>
+<span class="inline-flex items-center rounded-full bg-stone-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-stone-600">Favorite</span>
+</div>
+</div>
+</div>
+<!-- Item 3: Char Siu Bao -->
+<div class="group flex flex-col gap-8 md:flex-row md:items-center md:gap-12">
+<div class="order-1 md:order-1 md:w-1/2 overflow-hidden rounded-lg shadow-2xl shadow-stone-200">
+<div class="aspect-[4/3] w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Fluffy white steamed buns filled with bbq pork" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuANGeiHjVEoRMy3dEl3Evss-Tvmh0zeUp7e0K44fuTaxprbsiW7d_yY2c-2GL8sU_JyJBr8axNKcx2k9d5Rap4kjfMaRuc0bsXGa3IphhxSb3Bb3amgPYay-Nx-ua2ON-QahPzEW4INbB_qU0KiCZIEX0aVNpNHU4lFpplzjKWV937p_bPxFMNRXkJ18P0DoMju-vHzMp-ttf5nvSW5NXHygwMuir6mgOH8vvGuVxEOn-mOhqGioJ-ze7KWcvjK7kZkoSvfNypvA60');"></div>
+</div>
+<div class="order-2 md:order-2 md:w-1/2 md:pl-8">
+<div class="flex items-baseline justify-between border-b border-accent/20 pb-4">
+<h4 class="text-2xl font-bold text-[#1a0f0f]">Char Siu Bao</h4>
+<span class="text-xl font-medium text-primary">$10</span>
+</div>
+<p class="mt-4 text-lg leading-relaxed text-[#5a4a4a]">
+                            Cloud-like steamed buns that pull apart to reveal a rich, sticky-sweet BBQ pork filling. The dough is fermented for 12 hours to achieve the perfect texture.
+                        </p>
+<div class="mt-6 flex gap-2">
+<span class="inline-flex items-center rounded-full bg-stone-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-stone-600">Pork</span>
+<span class="inline-flex items-center rounded-full bg-stone-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-stone-600">Signature</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-20 flex justify-center">
+<a class="group flex items-center gap-2 text-primary font-bold tracking-widest uppercase hover:opacity-80" href="#">
+                    View Full Menu <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Meet the Master Section -->
+<section class="bg-stone-paper py-24" id="story">
+<div class="container mx-auto max-w-6xl px-6">
+<div class="grid gap-12 lg:grid-cols-2 lg:gap-20 items-center">
+<div class="relative order-2 lg:order-1">
+<div class="absolute -left-4 -top-4 h-full w-full border-2 border-accent opacity-30 rounded-lg"></div>
+<div class="relative z-10 aspect-[3/4] overflow-hidden rounded-lg shadow-xl">
+<img alt="Portrait of an elderly asian chef smiling in a kitchen environment" class="h-full w-full object-cover grayscale transition-all duration-500 hover:grayscale-0" data-alt="Portrait of Chef Li in traditional chef coat" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP7HOmiIAEHhWp3cVPw_krBuOpaihl_A80uND4Opg3w1sW5EU2bIyfjXGr0NSiJjzlA3SVogyvlAI1bA5KQuoYhx1h80XBIXir8tyyJiR1EBCqb1BLcGDV5OWm61WM-4zf0fqKZTi5bzBAV0cs0NsRRi6OGVbQwcuqZ0mIcqDlb7_-4vhTZgWugT-M85rssnKSZ0wuZqwMLY5gA5S7BbftD_cYYzoa11WJP5qACHFKmWqLSnZZ3-SZ2GlDaRnFmF_BRXkrA-iusgA"/>
+</div>
+<div class="absolute bottom-6 right-6 z-20 bg-white p-4 shadow-lg rounded-sm max-w-[200px]">
+<p class="font-display font-bold text-lg text-[#1a0f0f]">Chef Wei Li</p>
+<p class="text-xs text-stone-500 uppercase tracking-wider">Executive Chef &amp; Founder</p>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<h2 class="text-accent text-sm font-bold uppercase tracking-[0.2em] mb-3">The Heritage</h2>
+<h3 class="mb-8 text-4xl font-bold text-[#1a0f0f] md:text-5xl">Chef Li's Legacy</h3>
+<div class="prose prose-lg text-[#5a4a4a]">
+<p class="mb-6 first-letter:float-left first-letter:mr-3 first-letter:text-7xl first-letter:font-bold first-letter:text-accent first-letter:leading-[0.8]">
+                            Precision is not just a technique; it is a form of respect. For over forty years, Chef Li has dedicated his life to the mastery of dim sum. Beginning his journey in the bustling teahouses of Guangzhou, he learned that the soul of a dumpling lies in the warmth of the hands that shape it.
+                        </p>
+<p class="mb-6">
+                            "We do not use machines," Chef Li insists. "A machine has no memory, no feeling. The dough must be felt, the filling must be balanced by instinct." It is this unwavering commitment to tradition that earned Dragon Dumpling its Michelin recognition in 2019.
+                        </p>
+<p>
+                            Every morning at 4 AM, the kitchen comes alive. Steam rises, knives chop in rhythm, and the day begins anew—honoring the past with every basket served.
+                        </p>
+</div>
+<div class="mt-10">
+<img alt="Signature of Chef Li" class="h-16 opacity-60" data-alt="Artistic signature script" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjYmeJeTBJ7RHcgEStVhx8KZP2PvaRyKNA_TNTeh-9FdOHEfwi0hXdZ6KOaixh3yTHzal43w3puw2VbZoSYZXafiXdx4DpXNx3JeHaYwY2DRjLMwQqg0jDsaeVnZjEU4ZBqiqdtUjitWEDUHnbx7gsUv8wIHVbtZNqoaN_ksf8OZup-CKMpfmPxJoDabSMU8Y7caJUWDw47iyTD4UHGx8ab9SmVmuwuHkPNaYicY82IdeenTYblt3xhkSUEBEcflbfXsIMP5rP_iA"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Reservation Section -->
+<section class="relative py-24 bg-[#1c1a17] text-stone-100 overflow-hidden" id="reserve">
+<!-- Subtle Pattern Background -->
+<div class="absolute inset-0 opacity-10 bg-repeat bg-[length:100px_100px]" data-alt="Subtle dot pattern resembling dragon scales" style="background-image: radial-gradient(circle, #C09B4E 1px, transparent 1px);">
+</div>
+<div class="relative z-10 container mx-auto max-w-5xl px-6">
+<div class="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-8 md:p-12 lg:p-16 shadow-2xl">
+<div class="mb-10 text-center">
+<h2 class="text-3xl font-bold tracking-tight text-white md:text-4xl">Book Your Experience</h2>
+<p class="mt-3 text-white/60">Join us for an evening of culinary artistry.</p>
+</div>
+<form class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+<!-- Date Picker -->
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold uppercase tracking-wider text-accent">Date</label>
+<div class="relative">
+<input class="w-full rounded-md border-0 bg-white/10 p-3 text-white shadow-inner ring-1 ring-white/20 transition-all focus:bg-white/20 focus:ring-2 focus:ring-primary" type="date"/>
+</div>
+</div>
+<!-- Time Picker -->
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold uppercase tracking-wider text-accent">Time</label>
+<div class="relative">
+<select class="w-full appearance-none rounded-md border-0 bg-white/10 p-3 text-white shadow-inner ring-1 ring-white/20 transition-all focus:bg-white/20 focus:ring-2 focus:ring-primary">
+<option>5:00 PM</option>
+<option>5:30 PM</option>
+<option>6:00 PM</option>
+<option>6:30 PM</option>
+<option>7:00 PM</option>
+<option>7:30 PM</option>
+<option>8:00 PM</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 pointer-events-none text-white/50">expand_more</span>
+</div>
+</div>
+<!-- Party Size -->
+<div class="flex flex-col gap-2">
+<label class="text-xs font-bold uppercase tracking-wider text-accent">Guests</label>
+<div class="relative">
+<select class="w-full appearance-none rounded-md border-0 bg-white/10 p-3 text-white shadow-inner ring-1 ring-white/20 transition-all focus:bg-white/20 focus:ring-2 focus:ring-primary">
+<option>2 Guests</option>
+<option>3 Guests</option>
+<option>4 Guests</option>
+<option>5 Guests</option>
+<option>6+ Guests</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 pointer-events-none text-white/50">group</span>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="flex flex-col gap-2 justify-end">
+<button class="h-[46px] w-full rounded-md bg-primary text-sm font-bold uppercase tracking-widest text-white shadow-lg transition-transform hover:scale-105 active:scale-95" type="button">
+                            Check Availability
+                        </button>
+</div>
+</form>
+<p class="mt-6 text-center text-xs text-white/40">
+                    For parties larger than 8, please contact our private dining team directly.
+                </p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-background-light pt-20 pb-10 border-t border-[#eadddd]">
+<div class="container mx-auto max-w-7xl px-6">
+<div class="grid grid-cols-1 gap-12 md:grid-cols-3 lg:gap-24 mb-16">
+<!-- Brand -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-3xl text-primary">ramen_dining</span>
+<h3 class="text-2xl font-black text-[#1a0f0f]">Dragon Dumpling</h3>
+</div>
+<p class="text-[#5a4a4a] leading-relaxed">
+                        Elevating the dim sum experience with honor, heritage, and the finest ingredients from land and sea.
+                    </p>
+</div>
+<!-- Contact Info -->
+<div class="flex flex-col gap-4">
+<h4 class="text-sm font-bold uppercase tracking-widest text-primary">Visit Us</h4>
+<address class="not-italic text-[#5a4a4a] leading-loose">
+                        188 Silk Road Avenue<br/>
+                        San Francisco, CA 94108<br/>
+                        (415) 555-0199<br/>
+                        hello@dragondumpling.com
+                    </address>
+</div>
+<!-- Hours -->
+<div class="flex flex-col gap-4">
+<h4 class="text-sm font-bold uppercase tracking-widest text-primary">Hours</h4>
+<ul class="text-[#5a4a4a] space-y-2">
+<li class="flex justify-between border-b border-stone-200 pb-2 border-dotted">
+<span>Mon - Thu</span>
+<span>11:00 AM - 9:30 PM</span>
+</li>
+<li class="flex justify-between border-b border-stone-200 pb-2 border-dotted">
+<span>Fri - Sat</span>
+<span>11:00 AM - 10:30 PM</span>
+</li>
+<li class="flex justify-between border-b border-stone-200 pb-2 border-dotted">
+<span>Sunday</span>
+<span>10:00 AM - 9:30 PM</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-[#eadddd] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-xs text-[#5a4a4a]">© 2024 Dragon Dumpling. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-[#1a0f0f] hover:text-primary transition-colors" href="#">
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path>
+</svg>
+</a>
+<a class="text-[#1a0f0f] hover:text-primary transition-colors" href="#">
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772 4.902 4.902 0 011.772-1.153c.636-.247 1.363-.416 2.427-.465 1.067-.047 1.408-.06 3.808-.06h.63zm-5.496 3.664c-1.328 0-2.404 1.076-2.404 2.404v1.896c0 1.328 1.076 2.404 2.404 2.404h1.896c1.328 0 2.404-1.076 2.404-2.404V8.068c0-1.328-1.076-2.404-2.404-2.404H6.82zm9.144 0a1.696 1.696 0 110 3.392 1.696 1.696 0 010-3.392z" fill-rule="evenodd"></path>
+</svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
