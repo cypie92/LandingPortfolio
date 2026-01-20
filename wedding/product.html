@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>The Ethereal Silk - Maison Luxe</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&amp;family=Manrope:wght@200..800&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c0a068",
+                        "primary-dark": "#a08048",
+                        "background-light": "#ffffff",
+                        "background-dark": "#181a1b",
+                        "stone-100": "#f5f5f4",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Serif", "serif"],
+                        "body": ["Manrope", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c3a86f;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9e864e;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-primary dark:text-primary transition-colors duration-300">
+    <div class="min-h-screen flex flex-col font-display selection:bg-primary/20 selection:text-primary-dark">
+        <nav
+            class="w-full px-6 py-8 md:px-12 lg:px-20 flex items-center justify-between sticky top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm transition-all duration-300 border-b border-primary/10">
+            <button class="md:hidden text-primary hover:text-primary-dark transition-colors">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+            <a class="text-2xl md:text-3xl font-black tracking-tighter text-primary dark:text-primary hover:opacity-80 transition-opacity"
+                href="index.html">
+                MAISON LUXE
+            </a>
+            <div class="hidden md:flex items-center gap-12">
+                <a class="text-sm font-medium tracking-widest uppercase text-primary hover:text-primary-dark hover:underline underline-offset-4 decoration-1 transition-all"
+                    href="index.html#collection">Collections</a>
+                <a class="text-sm font-medium tracking-widest uppercase text-primary hover:text-primary-dark hover:underline underline-offset-4 decoration-1 transition-all"
+                    href="about.html">Maison</a>
+                <a class="text-sm font-medium tracking-widest uppercase text-primary hover:text-primary-dark hover:underline underline-offset-4 decoration-1 transition-all"
+                    href="index.html#consultation">Contact</a>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="text-primary hover:text-primary-dark transition-colors">
+                    <span class="material-symbols-outlined text-2xl">search</span>
+                </button>
+                <button class="text-primary hover:text-primary-dark transition-colors relative">
+                    <span class="material-symbols-outlined text-2xl">local_mall</span>
+                    <span class="absolute -top-1 -right-1 flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                    </span>
+                </button>
+            </div>
+        </nav>
+        <main class="flex-grow w-full flex flex-col lg:flex-row">
+            <div class="w-full lg:w-[60%] flex flex-row gap-1 overflow-x-auto hide-scrollbar snap-x snap-mandatory">
+                <div class="w-full min-w-full relative aspect-[3/4] bg-stone-100 snap-start">
+                    <div class="absolute inset-0 bg-center bg-cover"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuACxX_bXowmaFHpgJ5OmRMMo8D-DkmwooOFgaNL1wZYF74T7P4PXIlxa6yR-Wt1Cvjpd4JCyo0eQwM3JZl7js1XpzRldx7WH7sQckvb2G-RUDhHA4CM8mv5WjaWEmaBndOfqJRhIFzg9uqf14zZSMZlKqsqlOtT5fXvabS10Db3v9aUkrwH1--Ytz_Sy_-PPZ1DWW-qXoRu6OGnJAUE38YsDG_66xCcaU354kkq9h39dsPeJKztGv8KNJ2aCemM8vk8uYhcPceVG5E');">
+                    </div>
+                </div>
+                <div class="w-full min-w-full relative aspect-[3/4] bg-stone-100 snap-start">
+                    <div class="absolute inset-0 bg-center bg-cover"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDCsB8VvgLnO-J5BOHtHdavysD0Qzq0AL0oll8i4D-dBaNPV7jxcj7bNj2xDDAoL17AUc6LO0_N9H6Lg-96X-nK6JRektulY1KtNwSdEzt4XGgC7ugaPuvEtqFNKPmIigEEqASTPGhLXIEFcYaisbW6nOdqW8ok5unT1l14LgPJOVZi-hITrhnl4qZpAL2BaIZEbEXxMlEa-eqCMLohm7SyOwv6PXFsMEGHu4WJZBcAQu_9VdGVTni74x4c04qB3JFZ2MxrxGWQLrE');">
+                    </div>
+                </div>
+                <div class="w-full min-w-full relative aspect-[3/4] bg-stone-100 snap-start">
+                    <div class="absolute inset-0 bg-center bg-cover"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDQ17JyuzBSfLoTyLBPb6Cun_0CdSlx5GZdtxzEWOhgVTJm07eCiMhJdLa_KeHPqnklAIxCOdzrqvaZWrEIx-ibBmr7pQaqSQcBsezKkNOXl8JXKAAebNPOb-zA6Q2ZK9Fd-jjkr8zS3QlOaFciz6Vd4tPLOnl0vIISCaAJ2dJCqdnUdaXCkx90YM4TfMGkUcnDWVGH46ZAdzwyHsKFZyx_uEsQheHoQedRM7LIRJF9qi7AGF9T4sZTiywe4c_mmzWVtl5FLzQHzIA');">
+                    </div>
+                </div>
+                <div class="w-full min-w-full relative aspect-[3/4] bg-stone-100 snap-start">
+                    <div class="absolute inset-0 bg-center bg-cover"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCcWa6Ci42bGhsbRxBV6bsMWWss59ogNFv2FwAYVl2yWjlGppWrIWqzu4o42B0-sCEyu0SM7P1S7I0-WMEORUB9tyZUMlxiWGzRCFzcCp4t27hJJTOtr_HBSntHxQljmrpfPbyV2d1eO5JKG1mJjdbY2a49ViCH9uTqey1WfmoHeYNkMSpmcVEZwUihrJfRFugVnTuEphrKkrPi9qlVYHuy82xverJYy_GBi32H8Pn1GLNVHq-zJ3aO7aVve_yLVoW0rri3v5XYmhE');">
+                    </div>
+                </div>
+            </div>
+            <div
+                class="w-full lg:w-[40%] bg-background-light dark:bg-background-dark lg:h-[calc(100vh-100px)] lg:sticky lg:top-[100px] flex flex-col p-8 md:p-12 lg:p-16 xl:p-24 overflow-y-auto">
+                <div class="flex flex-col gap-8 my-auto">
+                    <div class="flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-primary/60">
+                        <a class="hover:text-primary transition-colors" href="index.html">Home</a>
+                        <span>/</span>
+                        <a class="hover:text-primary transition-colors" href="index.html#collection">Bridal</a>
+                        <span>/</span>
+                        <span class="text-primary">The Ethereal Silk</span>
+                    </div>
+                    <div class="space-y-4">
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-light text-primary leading-tight">
+                            The Ethereal Silk
+                        </h1>
+                        <p class="text-xl md:text-2xl font-display italic text-primary/80 font-light">
+                            Price upon Request
+                        </p>
+                    </div>
+                    <div class="h-px w-16 bg-primary/30"></div>
+                    <div
+                        class="prose prose-stone prose-p:font-body prose-p:text-primary/70 prose-p:leading-relaxed prose-p:tracking-wide">
+                        <p>
+                            Crafted from the finest 100% Mulberry silk, 'The Ethereal Silk' embodies the essence of
+                            understated luxury. The fluid silhouette drapes effortlessly, capturing light with every
+                            movement, creating a mesmerizing aura of sophistication.
+                        </p>
+                        <p>
+                            Featuring hand-finished French seams and delicate pearl button details along the spine, this
+                            gown is a testament to atelier craftsmanship. Perfect for the modern bride seeking timeless
+                            elegance with a contemporary soul.
+                        </p>
+                    </div>
+                    <div class="space-y-2 pt-4">
+                        <div class="flex items-center gap-3 text-sm font-body text-primary/80">
+                            <span class="material-symbols-outlined text-lg">check_circle</span>
+                            <span>100% Mulberry Silk Satin</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm font-body text-primary/80">
+                            <span class="material-symbols-outlined text-lg">check_circle</span>
+                            <span>Hand-embellished pearl details</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm font-body text-primary/80">
+                            <span class="material-symbols-outlined text-lg">check_circle</span>
+                            <span>Custom tailoring available</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-4 mt-8">
+                        <button
+                            class="w-full bg-primary text-background-light hover:bg-primary-dark transition-all duration-300 py-5 px-8 text-sm font-bold tracking-[0.2em] uppercase rounded-sm shadow-sm hover:shadow-md active:scale-[0.99]">
+                            Book Private Fitting
+                        </button>
+                        <button
+                            class="w-full border border-primary text-primary hover:bg-primary/5 transition-all duration-300 py-4 px-8 text-sm font-bold tracking-[0.2em] uppercase rounded-sm flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined text-lg">favorite_border</span>
+                            Add to Wishlist
+                        </button>
+                    </div>
+                    <p class="text-xs text-primary/50 text-center mt-6 font-body tracking-wide">
+                        Questions? <a class="underline hover:text-primary transition-colors" href="#">Contact our
+                            Concierge</a>
+                    </p>
+                </div>
+            </div>
+        </main>
+        <footer
+            class="w-full py-12 border-t border-primary/10 bg-background-light dark:bg-background-dark z-10 relative">
+            <div class="container mx-auto px-6 flex flex-col items-center gap-8">
+                <div class="flex items-center gap-8">
+                    <a class="text-primary hover:text-primary-dark transition-colors duration-300 transform hover:scale-110"
+                        href="#">
+                        <span class="material-symbols-outlined text-2xl">photo_camera</span>
+                    </a>
+                    <a class="text-primary hover:text-primary-dark transition-colors duration-300 transform hover:scale-110"
+                        href="#">
+                        <span class="material-symbols-outlined text-2xl">public</span>
+                    </a>
+                    <a class="text-primary hover:text-primary-dark transition-colors duration-300 transform hover:scale-110"
+                        href="#">
+                        <span class="material-symbols-outlined text-2xl">auto_awesome</span>
+                    </a>
+                </div>
+                <div
+                    class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm tracking-widest uppercase text-primary/70">
+                    <a class="hover:text-primary transition-colors" href="#">Privacy</a>
+                    <a class="hover:text-primary transition-colors" href="#">Terms</a>
+                    <a class="hover:text-primary transition-colors" href="#">Accessibility</a>
+                </div>
+                <p class="text-xs text-primary/40 font-body tracking-wide">
+                    © 2024 Maison Luxe. All rights reserved.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+</body>
+
+</html>
