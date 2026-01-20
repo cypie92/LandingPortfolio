@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Eume Wedding - Services &amp; Products</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b6e6b",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#151d1d",
+                        "text-main": "#131616",
+                        "text-muted": "#6b807f",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Serif", "serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Noto Serif', serif;
+        }.fade-up {
+            animation: fadeUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }@keyframes kenBurns {
+            0% { transform: scale(1.15); }
+            100% { transform: scale(1.0); }
+        }
+        .animate-ken-burns {
+            animation: kenBurns 18s ease-out forwards;
+            transform-origin: center center;
+            will-change: transform;
+        }@keyframes heroExit {
+            to {
+                opacity: 0;
+                transform: scale(0.95);
+                filter: blur(8px);
+            }
+        }@supports (animation-timeline: view()) {
+            .scroll-hero-exit {
+                animation: heroExit linear forwards;
+                animation-timeline: view();animation-range: exit 0% exit 80%;
+                will-change: transform, opacity, filter;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-gray-100 transition-colors duration-300">
+<header class="sticky top-0 z-50 bg-white/95 dark:bg-[#1a2323]/95 backdrop-blur-sm border-b border-gray-100 dark:border-gray-800">
+<div class="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="text-primary">
+<span class="material-symbols-outlined text-[32px]">local_florist</span>
+</div>
+<h1 class="text-2xl font-display font-bold text-text-main dark:text-white tracking-tight">Eume Wedding</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-sm font-medium text-primary font-bold" href="#">Services</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Portfolio</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">About</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Contact</a>
+</nav>
+<button class="hidden md:flex bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-sm hover:shadow-md">
+            Request Quote
+        </button>
+<button class="md:hidden text-text-main dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<section class="relative h-[600px] w-full flex items-center justify-center overflow-hidden bg-background-dark">
+<div class="absolute inset-0 z-0 scroll-hero-exit">
+<div class="w-full h-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-center animate-ken-burns" data-alt="Elegant wedding reception table setting with floral arrangements and candles" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCFmu8BQftR-j4RXQuFzR31Go2i-l2Krv0hgiOQbjiItOC_MkazQMEIDwJzxOc4QXgAfH4ILtPdePXPkLKU4unJydp5l47klOWCHmco9AoKAt-Fw_4Y4VoJMiKxxMXYIcwfF0Hh5zI9TOBn_ABL_SF1LkPNka46BWHsQBpWuaYrB5k1N3BP0Svwan-85ycM7Aj1LzF9RoQ8z7pPQYnPxEue9Qx7aEPusLnU516kKen6x25XfkUFmQ6Q3KvfTyFfRbuXjrz25xjJTw');">
+</div>
+</div>
+<div class="absolute inset-0 bg-black/40 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
+</div>
+<div class="relative z-10 text-center max-w-3xl px-6 fade-up">
+<span class="inline-block py-1 px-3 border border-white/30 rounded-full text-xs font-medium text-white mb-6 tracking-wider uppercase backdrop-blur-md">Est. 2024</span>
+<h1 class="text-4xl md:text-6xl font-display font-bold text-white mb-6 leading-tight drop-shadow-sm">
+            Curated Event Styling &amp; Rentals
+        </h1>
+<p class="text-lg md:text-xl text-white/90 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+            Transforming venues into timeless memories with floral artistry, bespoke decor, and attention to every delicate detail.
+        </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<button class="bg-primary hover:bg-[#235856] text-white h-12 px-8 rounded-lg text-base font-bold transition-all shadow-lg hover:shadow-xl w-full sm:w-auto">
+                View Services
+            </button>
+<button class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white h-12 px-8 rounded-lg text-base font-medium transition-all w-full sm:w-auto">
+                Browse Rentals
+            </button>
+</div>
+</div>
+</section>
+<section class="py-24 px-6 relative overflow-hidden bg-background-light dark:bg-background-dark">
+<div class="absolute top-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+<div class="max-w-[1200px] mx-auto">
+<div class="text-center mb-20 fade-up delay-100">
+<h2 class="text-primary text-sm font-bold tracking-widest uppercase mb-3">Our Expertise</h2>
+<h3 class="text-4xl md:text-5xl font-display font-bold text-text-main dark:text-white mb-4">Bespoke Styling Services</h3>
+<div class="h-1 w-20 bg-primary/30 mx-auto rounded-full"></div>
+</div>
+<div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 mb-24 fade-up delay-200 group">
+<div class="w-full lg:w-1/2 relative">
+<div class="aspect-[4/3] rounded-xl overflow-hidden shadow-xl">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Close up of lush wedding floral arch with roses and greenery" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBzcsCh_p6lDONxQr4x25WCubDy7B32I8tvO2XL_Ow2S77m46OoA-S3LR5ilMSbvjE8JwYkBJrO3TOfHAJqeQf_y92qiI74tCmBtohxfHENRN2EeRRUkzpyAJPhVOmX6JYmuu6Khv8N9_RaunqCMLW8s4m2UlKovPd0kxwz3ROiNyybwIMsJSKmSfS8ESbmPfM415Nvd9VlJQMRUcL52Gw2eSCOYBl2k_IEt-PgKfKwubx0-1nOjTcugs4esK6CeEabrJe_ez3llw');"></div>
+</div>
+<div class="absolute -bottom-4 -right-4 w-full h-full border-2 border-primary/20 rounded-xl -z-10 hidden lg:block"></div>
+</div>
+<div class="w-full lg:w-1/2">
+<div class="flex items-center gap-3 mb-4">
+<span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined">yard</span>
+</span>
+<h4 class="text-2xl font-display font-bold text-text-main dark:text-white">Floral Design</h4>
+</div>
+<p class="text-text-muted dark:text-gray-300 text-lg leading-relaxed mb-6">
+                    Our signature floral artistry features lush, seasonal blooms tailored to your color palette to create breathtaking focal points. From cascading bouquets to dramatic archways, we source the freshest flowers to bring the garden to your gathering.
+                </p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-3 text-text-main dark:text-gray-200">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span>Bridal &amp; Bridesmaid Bouquets</span>
+</li>
+<li class="flex items-center gap-3 text-text-main dark:text-gray-200">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span>Ceremony Arches &amp; Installations</span>
+</li>
+<li class="flex items-center gap-3 text-text-main dark:text-gray-200">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span>Fresh Centerpieces</span>
+</li>
+</ul>
+<a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all" href="#">
+                    View Gallery <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-20 mb-24 fade-up delay-200 group">
+<div class="w-full lg:w-1/2 relative">
+<div class="aspect-[4/3] rounded-xl overflow-hidden shadow-xl">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Indoor wedding reception with hanging fairy lights and white drapery" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDipirFQGUzKjySBL7vM7eqCeeatfTNpCAlBJYwHI29HjRGu4p4I4mo7QohQnTlrhZMCMw_bP4NywqKyu042x6K3hZ2c__E2rEgo9fjt9QbyoD903WeZckOuDaJGWyrSwUqaFEnCzDX-ymhKN4lyrUg2o7mB-2tLf2_cxLMOx0LFLhfvwfjNa-N4CBMTzwAAN596D79NmL8ZnAK2wsD3RRCGzGPJcTNUDBnl3jJMaX1iGfHI_gfwrNqaxtYM7_9S45fuKNhiKuHHw');"></div>
+</div>
+<div class="absolute -bottom-4 -left-4 w-full h-full border-2 border-primary/20 rounded-xl -z-10 hidden lg:block"></div>
+</div>
+<div class="w-full lg:w-1/2">
+<div class="flex items-center gap-3 mb-4">
+<span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined">light_mode</span>
+</span>
+<h4 class="text-2xl font-display font-bold text-text-main dark:text-white">Lighting &amp; Drapery</h4>
+</div>
+<p class="text-text-muted dark:text-gray-300 text-lg leading-relaxed mb-6">
+                    Set the mood with ambient fairy lights, crystal chandeliers, and elegant fabric swags that transform any venue. We specialize in manipulating space and light to create an intimate, ethereal atmosphere for you and your guests.
+                </p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-3 text-text-main dark:text-gray-200">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span>Fairy Light Canopies</span>
+</li>
+<li class="flex items-center gap-3 text-text-main dark:text-gray-200">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span>Ceiling &amp; Wall Drapery</span>
+</li>
+<li class="flex items-center gap-3 text-text-main dark:text-gray-200">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span>Uplighting &amp; Gobo Projection</span>
+</li>
+</ul>
+<a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all" href="#">
+                    View Gallery <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 fade-up delay-200 group">
+<div class="w-full lg:w-1/2 relative">
+<div class="aspect-[4/3] rounded-xl overflow-hidden shadow-xl">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Elegant table setting with gold charger plates and crystal glassware" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCCw92Kf2keJpRjdT5yp9wkZS99ltp7AZ7r5SwOeyyLbZ174kJiLb3H9CHUzwYAtBqq8xX8NbqARizXvItMkhfKlwVK157Y93-zSlovNYOxw-OweILbw6eaAd1lAU26KEH773E_ZC6Z4YuLZ9n-P-TaDFXbpOETMKdXK6C3dsoq8cg8v3HDgQ9b1QZyoD7tVkp0o-XxXgZLjmdB_kZAyZFomJmGjxKl1Op1cjyhfmXNeOCinhho9PkwhUKoHBqw-kd-THpYaNKLpQ');"></div>
+</div>
+<div class="absolute -bottom-4 -right-4 w-full h-full border-2 border-primary/20 rounded-xl -z-10 hidden lg:block"></div>
+</div>
+<div class="w-full lg:w-1/2">
+<div class="flex items-center gap-3 mb-4">
+<span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined">restaurant</span>
+</span>
+<h4 class="text-2xl font-display font-bold text-text-main dark:text-white">Table Styling</h4>
+</div>
+<p class="text-text-muted dark:text-gray-300 text-lg leading-relaxed mb-6">
+                    From linens to charger plates, every place setting tells a story. We curate tablescapes that invite conversation and delight the senses, ensuring your guests dine in absolute style and comfort.
+                </p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-3 text-text-main dark:text-gray-200">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span>Premium Linens &amp; Napkins</span>
+</li>
+<li class="flex items-center gap-3 text-text-main dark:text-gray-200">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span>Charger Plates &amp; Cutlery</span>
+</li>
+<li class="flex items-center gap-3 text-text-main dark:text-gray-200">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span>Custom Place Cards &amp; Menus</span>
+</li>
+</ul>
+<a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all" href="#">
+                    View Gallery <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 px-6 bg-white dark:bg-[#1a2323] border-t border-gray-100 dark:border-gray-800">
+<div class="max-w-[1200px] mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 fade-up">
+<div>
+<h2 class="text-4xl font-display font-bold text-text-main dark:text-white mb-2">The Rental Collection</h2>
+<p class="text-text-muted dark:text-gray-400 max-w-lg">Premium decor pieces available for individual hire to elevate your DIY styling.</p>
+</div>
+<button class="flex items-center gap-2 text-primary font-bold hover:underline">
+                Download Full Catalogue <span class="material-symbols-outlined">download</span>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="group bg-background-light dark:bg-[#202929] rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer fade-up delay-100">
+<div class="aspect-square w-full overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Gold Chiavari chair with white cushion" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCoegxMbAGWU9IMMX74K9ey3S2yTQ3jFUf5f0Vaq45fseV30vloDrvRkxkhdDO5QPphQWb-dAYma5g7DzvaqEF0I4sYq8tKdwuEzpLMQYtLLOMICzHy2RAy_PsgL0r_Gx8mQRAZaq3ysp-perFedtHxEMq4_KokLjoBzzH3GA4sPsvGPD9kXQvfCiwJm0no1cZdIalqurWAMxi-HWDTlSaZHzwkvxpUeq8SF_mHKGgC1kHes4FBtMn4eTANecUyXjHas696AgDUZA');"></div>
+<div class="absolute top-3 right-3 bg-white/90 dark:bg-black/80 px-2 py-1 rounded text-xs font-bold text-text-main dark:text-white backdrop-blur-sm">From $8/ea</div>
+</div>
+<div class="p-5">
+<h3 class="text-lg font-bold font-display text-text-main dark:text-white mb-1 group-hover:text-primary transition-colors">Premium Seating</h3>
+<p class="text-sm text-text-muted dark:text-gray-400">Chiavari, Ghost, and Cross-back styles</p>
+</div>
+</div>
+<div class="group bg-background-light dark:bg-[#202929] rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer fade-up delay-200">
+<div class="aspect-square w-full overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Crystal candelabra centerpiece on table" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC2V4hwi7T9gZyO1MWIKLIvWUMnwYDXEQ34Ce64Mz1um9vruRcYCuCVnLW7r6H0_7m4C2xwGg6c374kia7Imx3MUwTgst5R-KgBs9N7oNTdj2neFZUWCYYWBuYiL2Qo0FeugZSULowQekhtdEzTLbWKGvfZCHQhTca7eTleoZSLe5uGOdHtQdD7u6byD4eBO4d4G3UiU7w8BSKQPWOJtj_5SC1NQTLGFeiuFwnag6mY-sdxvbxRtUW47lDN3Hvf9CpzI0Klhdfr8w');"></div>
+<div class="absolute top-3 right-3 bg-white/90 dark:bg-black/80 px-2 py-1 rounded text-xs font-bold text-text-main dark:text-white backdrop-blur-sm">From $25/ea</div>
+</div>
+<div class="p-5">
+<h3 class="text-lg font-bold font-display text-text-main dark:text-white mb-1 group-hover:text-primary transition-colors">Centerpieces</h3>
+<p class="text-sm text-text-muted dark:text-gray-400">Candelabras, Vases, and Geometric stands</p>
+</div>
+</div>
+<div class="group bg-background-light dark:bg-[#202929] rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer fade-up delay-300">
+<div class="aspect-square w-full overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Wooden rustic wedding arch outdoors" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBwXA4Eu0CvTsSfvKjrYBvd3KJl_Ud6iWduI7Q1c4SIFN8e9somPUV5CVoK2zLdMtnkmLNs_rSb0KAaYMCjqjj6j-96CgJfJb9JOSyyVIaxxWVPSMakVf9oOU1aaoDAsgyq3GfGdZRagxnEjVFOHVxyWwBeCZJY1v1flf8ift6Wdr1jEinDjFLnH9BHMG7kCY6lndI2sdc3WC4gTSDwAvNb4n5uApKW9mUr7673dfS-YgPLVmJUyh4XqWHUbbv6ph4gVKAVdOB_OA');"></div>
+<div class="absolute top-3 right-3 bg-white/90 dark:bg-black/80 px-2 py-1 rounded text-xs font-bold text-text-main dark:text-white backdrop-blur-sm">From $150/ea</div>
+</div>
+<div class="p-5">
+<h3 class="text-lg font-bold font-display text-text-main dark:text-white mb-1 group-hover:text-primary transition-colors">Arches &amp; Backdrops</h3>
+<p class="text-sm text-text-muted dark:text-gray-400">Wooden, Metal, and Floral walls</p>
+</div>
+</div>
+<div class="group bg-background-light dark:bg-[#202929] rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer fade-up delay-400">
+<div class="aspect-square w-full overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Assorted brass candle holders and lanterns" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDCaDpthrkJcIeiBGc5zWAklxGNzvK47oQ437SMF2SpSgVRjGfRDs93rHLWy5w3wEQonBdBLFcAyCYOCtEGeBzhhAvdBsfTRzt0kKHDPosP_uibWHuowmx8vR_NI1BDlRRNGi4_BL64aKftywuYoCLyDN7Fk25vwu38x7-u3ICSMPTXaE5Oauhj7b-y17mwWBdyfq-UKcuet7MpGhD6_ogaE_rE7Bmbbj0yIzvJ1UsfAAKZjilIxScAY3tL9c664PkseIfMqnm4hw');"></div>
+<div class="absolute top-3 right-3 bg-white/90 dark:bg-black/80 px-2 py-1 rounded text-xs font-bold text-text-main dark:text-white backdrop-blur-sm">From $5/ea</div>
+</div>
+<div class="p-5">
+<h3 class="text-lg font-bold font-display text-text-main dark:text-white mb-1 group-hover:text-primary transition-colors">Small Decor Details</h3>
+<p class="text-sm text-text-muted dark:text-gray-400">Candle holders, Signs, and Cake stands</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 px-6 bg-primary/5 dark:bg-[#1a2323]/50">
+<div class="max-w-4xl mx-auto text-center">
+<span class="material-symbols-outlined text-4xl text-primary/40 mb-6">format_quote</span>
+<p class="text-2xl md:text-3xl font-display italic text-text-main dark:text-white mb-8 leading-relaxed">
+            "Eume Wedding transformed our venue into something out of a fairytale. The attention to detail in the floral arrangements and lighting was simply magical."
+        </p>
+<div class="flex items-center justify-center gap-3">
+<div class="w-12 h-12 rounded-full bg-gray-300 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of Sarah Jenkins" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoacttuZKwCduJX2a60OtA8nl88Y8IaRw9TCGSI5fGQDSrpUtY6Gz-KqVCirXzV-UNMfhl6tmwX0jyPdEGdlzorElsEk4MnzmWVQy_iTceGuzZnIJaJ3NUgewtXgn5Ek8yefigK2xMIsaO8czwSN_UjP4md92pY62_sJuK5_gXeRjph2a1GbzOmqOCgnPXEZR-Ocd0aTAwtaYOJuZw9f-OxoSk2tD2-wmoBQE0ybyq22MeVkdC9gubsMPcph4ysDq0KgchsBS4AA"/>
+</div>
+<div class="text-left">
+<p class="font-bold text-text-main dark:text-white text-sm">Sarah Jenkins</p>
+<p class="text-xs text-text-muted uppercase tracking-wide">Bride, Summer 2023</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 px-6 relative bg-primary overflow-hidden">
+<div class="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full blur-2xl -translate-x-1/2 translate-y-1/2"></div>
+<div class="max-w-[960px] mx-auto text-center relative z-10">
+<h2 class="text-3xl md:text-5xl font-display font-bold text-white mb-6">Ready to design your dream day?</h2>
+<p class="text-white/80 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
+            Whether you need full event styling or just the perfect finishing touches, our team is ready to bring your vision to life.
+        </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-white text-primary hover:bg-gray-50 h-14 px-8 rounded-lg text-lg font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
+                Request a Custom Quote
+            </button>
+<button class="bg-primary border border-white/30 hover:bg-primary/80 text-white h-14 px-8 rounded-lg text-lg font-medium transition-all hover:-translate-y-1">
+                Schedule Consultation
+            </button>
+</div>
+</div>
+</section>
+<footer class="bg-background-light dark:bg-[#151d1d] pt-20 pb-10 px-6 border-t border-gray-200 dark:border-gray-800">
+<div class="max-w-[1200px] mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="md:col-span-1">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary text-2xl">local_florist</span>
+<span class="text-xl font-display font-bold text-text-main dark:text-white">Eume Wedding</span>
+</div>
+<p class="text-text-muted text-sm leading-relaxed mb-6">
+                    Creating unforgettable moments through bespoke styling, floral design, and curated rentals.
+                </p>
+<div class="flex gap-4">
+<a class="text-text-muted hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">photo_camera</span></a>
+<a class="text-text-muted hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+<a class="text-text-muted hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-text-main dark:text-white mb-6">Services</h4>
+<ul class="space-y-4 text-sm text-text-muted">
+<li><a class="hover:text-primary transition-colors" href="#">Floral Design</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Event Styling</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Lighting &amp; Audio</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Furniture Rental</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-text-main dark:text-white mb-6">Company</h4>
+<ul class="space-y-4 text-sm text-text-muted">
+<li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Portfolio</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Testimonials</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-text-main dark:text-white mb-6">Contact</h4>
+<ul class="space-y-4 text-sm text-text-muted">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-lg mt-0.5">location_on</span>
+<span>123 Wedding Lane,<br/>Beverly Hills, CA 90210</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-lg">phone</span>
+<span>(555) 123-4567</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-lg">mail</span>
+<span>hello@eumewedding.com</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-text-muted">
+<p>© 2024 Eume Wedding. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="hover:text-text-main dark:hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-text-main dark:hover:text-white transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</div>
+</footer>
+
+</body></html>

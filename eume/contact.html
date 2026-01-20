@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Us - Eume Wedding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b6e6b",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#151d1d",
+                        "accent-rose": "#E3CAC2",
+                        "text-main": "#131616",
+                        "text-muted": "#6b807f",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Serif", "serif"],
+                        "sans": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom map filter to desaturate and match theme */
+        .map-filter {
+            filter: grayscale(100%) contrast(0.9) brightness(1.1);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main dark:text-gray-100 transition-colors duration-300">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Navbar -->
+<header class="sticky top-0 z-50 w-full bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+<div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
+<div class="flex items-center gap-3">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 4C14 4 5.5 11 5.5 22C5.5 31 12 40 24 44C36 40 42.5 31 42.5 22C42.5 11 34 4 24 4ZM24 28C20.7 28 18 25.3 18 22C18 18.7 20.7 16 24 16C27.3 16 30 18.7 30 22C30 25.3 27.3 28 24 28Z" fill="currentColor"></path>
+</svg>
+</div>
+<span class="text-2xl font-bold tracking-tight text-text-main dark:text-white">Eume Wedding</span>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Portfolio</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Services</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Stories</a>
+<a class="text-sm font-medium text-primary font-bold" href="#">Contact</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex h-10 items-center justify-center rounded-lg bg-primary px-6 text-sm font-bold text-white shadow-md hover:bg-primary/90 transition-all">
+                        Request Quote
+                    </button>
+<!-- Mobile Menu Icon -->
+<button class="md:hidden text-text-main dark:text-white">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<!-- Hero / Intro Section -->
+<section class="pt-16 pb-12 lg:pt-24 lg:pb-16 px-6">
+<div class="mx-auto max-w-7xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+<!-- Left Column: Content & Contact Info -->
+<div class="lg:col-span-5 flex flex-col justify-start pt-4">
+<div class="mb-12">
+<span class="uppercase tracking-widest text-xs font-bold text-primary mb-3 block">Get In Touch</span>
+<h1 class="text-5xl md:text-6xl font-black leading-tight tracking-tight mb-6 text-text-main dark:text-white">
+                                    Let’s Create Something Beautiful
+                                </h1>
+<p class="text-lg text-text-muted dark:text-gray-400 font-sans leading-relaxed">
+                                    Your love story is unique, and your wedding design should be too. We’d love to hear about your vision. Fill out the form or visit our studio for a coffee and consultation.
+                                </p>
+</div>
+<!-- Contact Details -->
+<div class="space-y-8 mb-12">
+<div class="flex items-start gap-4 group cursor-pointer">
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">call</span>
+</div>
+<div>
+<p class="text-xs font-bold uppercase tracking-wider text-text-muted mb-1">Phone</p>
+<a class="text-xl font-medium hover:text-primary transition-colors" href="tel:+15550123456">+1 (555) 012-3456</a>
+</div>
+</div>
+<div class="flex items-start gap-4 group cursor-pointer">
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div>
+<p class="text-xs font-bold uppercase tracking-wider text-text-muted mb-1">Email</p>
+<a class="text-xl font-medium hover:text-primary transition-colors" href="mailto:hello@eumewedding.com">hello@eumewedding.com</a>
+</div>
+</div>
+<div class="flex items-start gap-4 group">
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<div>
+<p class="text-xs font-bold uppercase tracking-wider text-text-muted mb-1">Studio</p>
+<address class="text-xl font-medium not-italic">
+                                            128 Rue de la Paix<br/>
+                                            75002 Paris, France
+                                        </address>
+</div>
+</div>
+</div>
+<!-- Social Proof / Mini Gallery -->
+<div class="mt-auto pt-8 border-t border-gray-200 dark:border-gray-800">
+<div class="flex items-center justify-between mb-4">
+<p class="font-medium text-text-main dark:text-white">Latest from Instagram</p>
+<div class="flex gap-3">
+<a class="text-text-muted hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a> <!-- Representing generic social icon -->
+<a class="text-text-muted hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">favorite</span></a> <!-- Representing generic social icon -->
+</div>
+</div>
+<div class="grid grid-cols-3 gap-3">
+<div class="aspect-square rounded-lg overflow-hidden bg-gray-200">
+<img class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" data-alt="Close up of floral wedding centerpiece with roses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjMoyS0yNpkhp8ZnfX-UdW5nW_OVPIGoigp_rJ3MFM29Q8R9ijE4g5Ajg-_MOQCPIHB153XkzkXsoX-IzQDcMo32gwPQZJvhcXPAoRNBIDExfyEBaPiJ1aMAuUeCHr5WjqdjQPnDFR4uI7RiF5Daw1NbB_91jMGsm42WD9qX55QtCNjxYciH6HKnuydodEQZ7S0zkBT808-tFibyeP9DLOO8RxESMTPikeWwnu3RdjeiaumhsD3sPHHOLq6NGJ-btbJ4jmj8ac4g"/>
+</div>
+<div class="aspect-square rounded-lg overflow-hidden bg-gray-200">
+<img class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" data-alt="Elegant wedding table setting with candles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANxu0IDWI9fa1q8mfEnKAMfB0V4KLeRNeRQ2u2RnR7slk9RDg_WttYFXQtBGVVdW_6sLtXlob8W2tBd0q9HS5Nza5s-99wiEp-5jt8xCIBKv71LFFrYwn-qNGNZ6pjG0zzMUOX_fciOc_c5B4izS2EaDpfpVTzOomtqgQCT9bQMtTXVosilGuI330f85LISKQkQL1rmtmQXue0RNwIxC90VN_JqB-7gaI2VVt6auQ0yG9C4zsBlnBfXIrf1V-uhsOjvexhAlAkDg"/>
+</div>
+<div class="aspect-square rounded-lg overflow-hidden bg-gray-200">
+<img class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" data-alt="Outdoor wedding ceremony arch with white fabric" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnSoZdPm0m7NwivSJlsSDTC8XInbVvewwaSDvbOXyG2juYBNhqUV90YGt4SB-dxyFp2H3KTDVY6m0aHgSbZXUSsk2R3UgKbbILG5rl1N2sogJXKY8TstK69aOukkD2E9h3kjIo59531HfWmR5WlexJCcXgTA-OIbErEgfNeqX_1al1Cbrbpid-gG-eQ8BjUbnybaNV-y7OrkntOVfZXqwwp3daEtGLbhaerc_0-8iS-CqvVim-rSEILIAWKnmaEQIaPrt0_cgysg"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Inquiry Form -->
+<div class="lg:col-span-7">
+<div class="bg-white dark:bg-[#1f2626] p-8 md:p-10 rounded-xl shadow-lg border border-gray-100 dark:border-gray-800 sticky top-28">
+<h3 class="text-2xl font-bold mb-6 text-text-main dark:text-white">Inquire for your event</h3>
+<form class="space-y-6">
+<!-- Names Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<label class="block">
+<span class="text-sm font-medium text-text-main dark:text-gray-300 mb-2 block font-sans">Your Name</span>
+<input class="w-full rounded-lg border-gray-200 bg-background-light dark:bg-background-dark dark:border-gray-700 h-12 px-4 focus:ring-2 focus:ring-accent-rose focus:border-accent-rose dark:text-white font-sans transition-all placeholder:text-gray-400" placeholder="Jane Doe" type="text"/>
+</label>
+<label class="block">
+<span class="text-sm font-medium text-text-main dark:text-gray-300 mb-2 block font-sans">Partner's Name</span>
+<input class="w-full rounded-lg border-gray-200 bg-background-light dark:bg-background-dark dark:border-gray-700 h-12 px-4 focus:ring-2 focus:ring-accent-rose focus:border-accent-rose dark:text-white font-sans transition-all placeholder:text-gray-400" placeholder="John Smith" type="text"/>
+</label>
+</div>
+<!-- Contact Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<label class="block">
+<span class="text-sm font-medium text-text-main dark:text-gray-300 mb-2 block font-sans">Email Address</span>
+<input class="w-full rounded-lg border-gray-200 bg-background-light dark:bg-background-dark dark:border-gray-700 h-12 px-4 focus:ring-2 focus:ring-accent-rose focus:border-accent-rose dark:text-white font-sans transition-all placeholder:text-gray-400" placeholder="hello@example.com" type="email"/>
+</label>
+<label class="block">
+<span class="text-sm font-medium text-text-main dark:text-gray-300 mb-2 block font-sans">Phone Number</span>
+<input class="w-full rounded-lg border-gray-200 bg-background-light dark:bg-background-dark dark:border-gray-700 h-12 px-4 focus:ring-2 focus:ring-accent-rose focus:border-accent-rose dark:text-white font-sans transition-all placeholder:text-gray-400" placeholder="(555) 000-0000" type="tel"/>
+</label>
+</div>
+<!-- Event Details Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<label class="block">
+<span class="text-sm font-medium text-text-main dark:text-gray-300 mb-2 block font-sans">Event Date</span>
+<input class="w-full rounded-lg border-gray-200 bg-background-light dark:bg-background-dark dark:border-gray-700 h-12 px-4 focus:ring-2 focus:ring-accent-rose focus:border-accent-rose dark:text-white font-sans transition-all text-gray-500 dark:text-gray-400" type="date"/>
+</label>
+<label class="block">
+<span class="text-sm font-medium text-text-main dark:text-gray-300 mb-2 block font-sans">Estimated Guest Count</span>
+<select class="w-full rounded-lg border-gray-200 bg-background-light dark:bg-background-dark dark:border-gray-700 h-12 px-4 focus:ring-2 focus:ring-accent-rose focus:border-accent-rose dark:text-white font-sans transition-all text-gray-500 dark:text-gray-400">
+<option disabled="" selected="" value="">Select range</option>
+<option value="&lt;50">Less than 50</option>
+<option value="50-100">50 - 100</option>
+<option value="100-200">100 - 200</option>
+<option value="200+">200+</option>
+</select>
+</label>
+</div>
+<!-- Venue -->
+<label class="block">
+<span class="text-sm font-medium text-text-main dark:text-gray-300 mb-2 block font-sans">Venue Name &amp; Location</span>
+<input class="w-full rounded-lg border-gray-200 bg-background-light dark:bg-background-dark dark:border-gray-700 h-12 px-4 focus:ring-2 focus:ring-accent-rose focus:border-accent-rose dark:text-white font-sans transition-all placeholder:text-gray-400" placeholder="e.g. Chateau de Tourreau, Provence" type="text"/>
+</label>
+<!-- Message -->
+<label class="block">
+<span class="text-sm font-medium text-text-main dark:text-gray-300 mb-2 block font-sans">Tell us about your vision</span>
+<textarea class="w-full rounded-lg border-gray-200 bg-background-light dark:bg-background-dark dark:border-gray-700 p-4 focus:ring-2 focus:ring-accent-rose focus:border-accent-rose dark:text-white font-sans transition-all resize-none placeholder:text-gray-400" placeholder="Any specific themes, colors, or dreams you have for your big day..." rows="4"></textarea>
+</label>
+<!-- Submit Button -->
+<button class="w-full h-14 rounded-lg bg-primary text-white font-bold text-lg hover:bg-primary/90 hover:shadow-lg transition-all flex items-center justify-center gap-2 group" type="button">
+<span>Request Quote</span>
+<span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Map Section -->
+<section class="pb-16 px-6">
+<div class="mx-auto max-w-7xl">
+<div class="w-full h-96 rounded-xl overflow-hidden shadow-sm relative group">
+<!-- Overlay Title for Map -->
+<div class="absolute top-4 left-4 z-10 bg-white dark:bg-background-dark px-4 py-2 rounded-lg shadow-md pointer-events-none">
+<p class="text-xs font-bold uppercase tracking-wider text-text-muted">Find us</p>
+<p class="font-bold text-text-main dark:text-white">Paris Studio</p>
+</div>
+<!-- Map Image with filter -->
+<img alt="Map of studio location" class="w-full h-full object-cover map-filter" data-alt="Grayscale map showing the location of the studio in Paris" data-location="Paris, France" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxNNPCRRJl9Ha-NfYx0OHdh5mSJUUcIbaptwdOZmcL-mPnr__BxQzunU8uh2IPlc4gxVMo_ftIRqkukbj3FgCkXDjcO9goLQHpSoZfr9-o4X8c1Vm9eDsXv7IuNY07C0AOGTjLTuKBqfhFCdwEIaMERqV8MfWwOa6Sx9m898xR_I9oq2dN6vqkh65pOAfwwNiHas7r-Ju9dgAeC8eXfwATTFIkK3oNfeZMXBjqwNijtcjV3Xx8Rz5vrmjA5d3OA0S8sXSz4E9sxw"/>
+<!-- Fallback Image if API key is missing/placeholder -->
+<div class="absolute inset-0 -z-10 bg-gray-200 flex items-center justify-center">
+<span class="text-gray-400">Map Loading...</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-[#0f1414] border-t border-gray-100 dark:border-gray-800 py-12 px-6">
+<div class="mx-auto max-w-7xl flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex flex-col md:flex-row items-center gap-8">
+<span class="text-xl font-bold text-text-main dark:text-white">Eume Wedding</span>
+<p class="text-sm text-text-muted">© 2024 Eume Wedding. All rights reserved.</p>
+</div>
+<div class="flex gap-6">
+<a class="text-sm text-text-muted hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-sm text-text-muted hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>
