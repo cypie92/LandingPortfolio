@@ -193,9 +193,19 @@
             </div>
 
             <!-- Scroll Indicator -->
-            <div class="absolute bottom-10 left-10 flex flex-col items-center gap-1 opacity-70">
-                <span class="text-[0.6rem] uppercase tracking-widest text-white">Scroll to Play</span>
-                <div class="h-12 w-[1px] bg-white/50"></div>
+            <div
+                class="absolute top-8 right-6 flex flex-col items-center gap-2 opacity-80 z-20 lg:top-auto lg:right-auto lg:bottom-10 lg:left-10 lg:items-start">
+                <span
+                    class="block text-[0.6rem] uppercase tracking-widest text-white lg:hidden [writing-mode:vertical-rl] rotate-180">Scroll</span>
+                <span class="hidden text-[0.6rem] uppercase tracking-widest text-white lg:block lg:mb-2">Scroll to
+                    Play</span>
+
+                <!-- Progress Line -->
+                <div class="h-16 w-[3px] bg-white/20 relative rounded-full overflow-hidden lg:h-[3px] lg:w-32">
+                    <div id="hero-progress-fill"
+                        class="absolute top-0 left-0 bg-primary transition-all duration-75 ease-linear w-full h-[var(--progress)] lg:h-full lg:w-[var(--progress)]"
+                        style="--progress: 0%"></div>
+                </div>
             </div>
         </div>
     </header>
@@ -287,7 +297,15 @@
             // The magic: convert 0-1 range to 0-(frameCount-1)
             const frameIndex = Math.floor(clampedFraction * (frameCount - 1));
 
-            requestAnimationFrame(() => updateImage(frameIndex));
+            requestAnimationFrame(() => {
+                updateImage(frameIndex);
+
+                // Update Progress Bar
+                const progressFill = document.getElementById('hero-progress-fill');
+                if (progressFill) {
+                    progressFill.style.setProperty('--progress', `${clampedFraction * 100}%`);
+                }
+            });
         });
     </script>
     <!-- Collection Grid -->
