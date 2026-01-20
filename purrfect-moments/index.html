@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Purrfect Moments - Modern Spa Zine</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Theme Config -->
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#dc6f47",
+              "lavender": "#B48CD2",
+              "lavender-light": "#E6D7F0",
+              "background-light": "#f8f6f6",
+              "background-dark": "#201612",
+              "paper": "#ffffff",
+              "paper-dark": "#2a221e",
+            },
+            fontFamily: {
+              "display": ["Epilogue", "sans-serif"],
+              "handwriting": ["Epilogue", "cursive"] // Fallback for specific handwriting feel if needed, usually a different font but Epilogue has italics
+            },
+            borderRadius: {
+              "DEFAULT": "0.5rem",
+              "lg": "1rem",
+              "xl": "1.5rem",
+              "2xl": "2rem",
+              "full": "9999px"
+            },
+            boxShadow: {
+              'hard': '6px 6px 0px 0px rgba(0,0,0,0.1)',
+              'hard-hover': '8px 8px 0px 0px rgba(0,0,0,0.15)',
+              'hard-primary': '4px 4px 0px 0px #ab4e2c',
+            },
+            animation: {
+              'bounce-slow': 'bounce 3s infinite',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      /* Custom scrollbar for Zine feel */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f8f6f6;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #B48CD2;
+        border-radius: 4px;
+      }
+      .paper-texture {
+        background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBvNPsbM0WZ9R0d2vFJgWhgxXqrMlY8JnPKQlg-jRLjiRMhGsR26qQsJcpz8ePCtb9Dqdc-oMpHl9BNIWbqUlMccLHvFUkyifodGe28KDOYONMZsydNmJvZ19RPxGhBk8g2c8LxO9owZVH-XpTfX-qqgJnCZtnqzbrGPajG0r6A6VAanAhhqkb3ynlhdr2gxAtcyydXp-oT1UYhqDfTznjJpmq1NZOa_f9UfWhqOi3ltWH1rZpVcjhzdMDMYp6TfTDX4R-OGgPZEw);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "framer-motion": "https://esm.sh/framer-motion@^12.27.1"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-background-light dark:bg-background-dark text-[#1a120f] dark:text-[#f2ebe8] font-display overflow-x-hidden selection:bg-lavender selection:text-white">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
