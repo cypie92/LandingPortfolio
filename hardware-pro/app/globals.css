@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #e45a2f;
+  --color-background-light: #f4f7fa;
+  --color-background-dark: #202327;
+  --color-surface-dark: #2B2F36;
+  --color-border-dark: #15171B;
+  --color-text-main: #B0B8C4;
+  --color-text-secondary: #6E7787;
+
+  --font-display: var(--font-space), "Space Grotesk", sans-serif;
+  --font-body: var(--font-inter), "Inter", sans-serif;
+}
+
+/* Custom Utilities */
+.bg-noise {
+  background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuClTT4jPnbdgqOkjaCkafQdRDxGcr4JUChl4wJ0IFb6p46RAy288e4LKL1Zm7TPMecqyLBtPRCi3LRk57yeGUg_ejJF0GSwq0NJLblD9ID36_NnAd_fN57FxNCsGW9l6Ua30xy1E4asergb2YyLVZObYzv1W07mvrFRF1kiFjPq6e3LYUxwx44hNmEq8lEogMacv0o9TRcIzFURd1_DWUyfdhAtELwssI7Bdf_24UlGR_j2tdoorkgMl5vMr3DkTKeYWhYT3oLVBQw);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
