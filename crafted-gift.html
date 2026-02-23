@@ -85,6 +85,44 @@
         .parallax-hero { background-attachment: scroll; }
     }
 
+    /* Process section parallax */
+    .process-img-wrapper {
+        overflow: hidden;
+        position: relative;
+    }
+    .parallax-process-img {
+        position: absolute;
+        inset: -20%;
+        background-size: cover;
+        background-position: center;
+        will-change: transform;
+    }
+    .process-step {
+        position: relative;
+    }
+    .process-step::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: linear-gradient(to bottom, transparent, rgba(184,149,106,0.25), transparent);
+        display: none;
+    }
+    @media (min-width: 1024px) {
+        .process-step::before { display: block; }
+    }
+    .process-number {
+        font-size: clamp(4rem, 8vw, 7rem);
+        line-height: 1;
+        color: rgba(184,149,106,0.12);
+        font-weight: 500;
+        position: absolute;
+        top: -0.15em;
+        left: 0;
+    }
+
     .product-card:hover .product-image {
         transform: scale(1.05);
     }
@@ -379,42 +417,118 @@
     </div>
 </section>
 
-<!-- Process Strip -->
-<section class="bg-forest py-20 lg:py-24">
-    <div class="mx-auto max-w-7xl px-6 lg:px-12">
-        <div class="fade-in text-center mb-16">
+<!-- Process Section — Enhanced with Parallax Images -->
+<section class="bg-forest overflow-hidden">
+    <!-- Section Header -->
+    <div class="pt-24 pb-8 lg:pt-32 lg:pb-12">
+        <div class="fade-in mx-auto max-w-7xl px-6 lg:px-12 text-center">
             <span class="text-xs font-sans font-medium uppercase tracking-widest-custom text-brass-light mb-4 block">Our Process</span>
             <h2 class="font-serif text-3xl font-500 text-white md:text-4xl">From Workshop to Doorstep</h2>
+            <div class="mx-auto mt-6 h-[1px] w-20 bg-brass/40"></div>
         </div>
-        <div class="grid grid-cols-1 gap-12 md:grid-cols-4">
-            <div class="fade-in stagger-1 text-center">
-                <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center border border-brass/30 text-brass-light">
-                    <span class="font-serif text-2xl">01</span>
-                </div>
-                <h3 class="font-serif text-lg font-500 text-white mb-3">Source</h3>
-                <p class="text-sm text-white/50 font-light leading-relaxed">We seek out the finest natural materials, ethically sourced from trusted suppliers.</p>
+    </div>
+
+    <!-- Step 1 — Source: Image Left, Text Right -->
+    <div class="process-step grid grid-cols-1 lg:grid-cols-2 min-h-[420px] lg:min-h-[520px]">
+        <div class="process-img-wrapper h-[340px] lg:h-auto">
+            <div class="parallax-process-img"
+                 style="background-image: url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1200&q=80'); filter: brightness(0.7) saturate(0.8);">
             </div>
-            <div class="fade-in stagger-2 text-center">
-                <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center border border-brass/30 text-brass-light">
-                    <span class="font-serif text-2xl">02</span>
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent to-forest/40 hidden lg:block"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-forest/60 to-transparent lg:hidden"></div>
+        </div>
+        <div class="fade-in-right flex items-center px-8 py-14 lg:px-20 lg:py-20">
+            <div class="relative max-w-md">
+                <span class="process-number font-serif">01</span>
+                <div class="relative">
+                    <div class="flex items-center gap-4 mb-2">
+                        <div class="h-[1px] w-10 bg-brass"></div>
+                        <span class="text-[10px] font-sans font-medium uppercase tracking-widest-custom text-brass-light">Step One</span>
+                    </div>
+                    <h3 class="font-serif text-3xl font-500 text-white mb-4 md:text-4xl">Source</h3>
+                    <p class="text-base text-white/60 font-light leading-relaxed">
+                        We seek out the finest natural materials &mdash; raw cotton, unfinished leather, mineral-rich clays &mdash; ethically sourced from trusted suppliers across three continents.
+                    </p>
                 </div>
-                <h3 class="font-serif text-lg font-500 text-white mb-3">Craft</h3>
-                <p class="text-sm text-white/50 font-light leading-relaxed">Each piece is shaped, fired, stitched, or woven by hand in our artisans' workshops.</p>
             </div>
-            <div class="fade-in stagger-3 text-center">
-                <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center border border-brass/30 text-brass-light">
-                    <span class="font-serif text-2xl">03</span>
+        </div>
+    </div>
+
+    <!-- Step 2 — Craft: Text Left, Image Right -->
+    <div class="process-step grid grid-cols-1 lg:grid-cols-2 min-h-[420px] lg:min-h-[520px]">
+        <div class="fade-in-left flex items-center px-8 py-14 lg:px-20 lg:py-20 order-2 lg:order-1">
+            <div class="relative max-w-md lg:ml-auto">
+                <span class="process-number font-serif" style="left:auto; right:0;">02</span>
+                <div class="relative">
+                    <div class="flex items-center gap-4 mb-2">
+                        <div class="h-[1px] w-10 bg-brass"></div>
+                        <span class="text-[10px] font-sans font-medium uppercase tracking-widest-custom text-brass-light">Step Two</span>
+                    </div>
+                    <h3 class="font-serif text-3xl font-500 text-white mb-4 md:text-4xl">Craft</h3>
+                    <p class="text-base text-white/60 font-light leading-relaxed">
+                        Each piece is shaped, fired, stitched, or woven by hand in our artisans' workshops. No machines, no moulds &mdash; just skilled hands and generations of knowledge.
+                    </p>
                 </div>
-                <h3 class="font-serif text-lg font-500 text-white mb-3">Inspect</h3>
-                <p class="text-sm text-white/50 font-light leading-relaxed">Every item is carefully examined for quality before it earns our maker's mark.</p>
             </div>
-            <div class="fade-in stagger-4 text-center">
-                <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center border border-brass/30 text-brass-light">
-                    <span class="font-serif text-2xl">04</span>
+        </div>
+        <div class="process-img-wrapper h-[340px] lg:h-auto order-1 lg:order-2">
+            <div class="parallax-process-img"
+                 style="background-image: url('https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?w=1200&q=80'); filter: brightness(0.7) saturate(0.8);">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-l from-transparent to-forest/40 hidden lg:block"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-forest/60 to-transparent lg:hidden"></div>
+        </div>
+    </div>
+
+    <!-- Step 3 — Inspect: Image Left, Text Right -->
+    <div class="process-step grid grid-cols-1 lg:grid-cols-2 min-h-[420px] lg:min-h-[520px]">
+        <div class="process-img-wrapper h-[340px] lg:h-auto">
+            <div class="parallax-process-img"
+                 style="background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80'); filter: brightness(0.7) saturate(0.8);">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent to-forest/40 hidden lg:block"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-forest/60 to-transparent lg:hidden"></div>
+        </div>
+        <div class="fade-in-right flex items-center px-8 py-14 lg:px-20 lg:py-20">
+            <div class="relative max-w-md">
+                <span class="process-number font-serif">03</span>
+                <div class="relative">
+                    <div class="flex items-center gap-4 mb-2">
+                        <div class="h-[1px] w-10 bg-brass"></div>
+                        <span class="text-[10px] font-sans font-medium uppercase tracking-widest-custom text-brass-light">Step Three</span>
+                    </div>
+                    <h3 class="font-serif text-3xl font-500 text-white mb-4 md:text-4xl">Inspect</h3>
+                    <p class="text-base text-white/60 font-light leading-relaxed">
+                        Every item is carefully examined for quality before it earns our maker's mark. We accept nothing less than exceptional craftsmanship.
+                    </p>
                 </div>
-                <h3 class="font-serif text-lg font-500 text-white mb-3">Wrap</h3>
-                <p class="text-sm text-white/50 font-light leading-relaxed">Presented in sustainable packaging, ready to delight whoever receives it.</p>
             </div>
+        </div>
+    </div>
+
+    <!-- Step 4 — Wrap: Text Left, Image Right -->
+    <div class="process-step grid grid-cols-1 lg:grid-cols-2 min-h-[420px] lg:min-h-[520px]">
+        <div class="fade-in-left flex items-center px-8 py-14 lg:px-20 lg:py-20 order-2 lg:order-1">
+            <div class="relative max-w-md lg:ml-auto">
+                <span class="process-number font-serif" style="left:auto; right:0;">04</span>
+                <div class="relative">
+                    <div class="flex items-center gap-4 mb-2">
+                        <div class="h-[1px] w-10 bg-brass"></div>
+                        <span class="text-[10px] font-sans font-medium uppercase tracking-widest-custom text-brass-light">Step Four</span>
+                    </div>
+                    <h3 class="font-serif text-3xl font-500 text-white mb-4 md:text-4xl">Wrap</h3>
+                    <p class="text-base text-white/60 font-light leading-relaxed">
+                        Presented in sustainable, beautifully designed packaging &mdash; because the experience of unwrapping should be just as memorable as the gift inside.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="process-img-wrapper h-[340px] lg:h-auto order-1 lg:order-2">
+            <div class="parallax-process-img"
+                 style="background-image: url('https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=1200&q=80'); filter: brightness(0.7) saturate(0.8);">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-l from-transparent to-forest/40 hidden lg:block"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-forest/60 to-transparent lg:hidden"></div>
         </div>
     </div>
 </section>
@@ -680,6 +794,23 @@ document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el 
     observer.observe(el);
 });
 
+// Parallax effect for process section images
+function updateProcessParallax() {
+    const images = document.querySelectorAll('.parallax-process-img');
+    const viewH = window.innerHeight;
+    images.forEach(img => {
+        const container = img.parentElement;
+        const rect = container.getBoundingClientRect();
+        // Skip if out of viewport
+        if (rect.bottom < -100 || rect.top > viewH + 100) return;
+        // progress 0 → 1 as element scrolls through viewport
+        const progress = (viewH - rect.top) / (viewH + rect.height);
+        // Map to a parallax offset range (-40px to +40px)
+        const offset = (progress - 0.5) * 80;
+        img.style.transform = 'translateY(' + offset + 'px) scale(1.15)';
+    });
+}
+
 // Navbar scroll behavior
 const navbar = document.getElementById('navbar');
 let lastScroll = 0;
@@ -694,8 +825,14 @@ window.addEventListener('scroll', () => {
         applyNavTransparentState();
     }
 
+    // Run process parallax
+    requestAnimationFrame(updateProcessParallax);
+
     lastScroll = currentScroll;
 });
+
+// Initialize parallax on load
+updateProcessParallax();
 
 // Mobile menu toggle
 const menuToggle = document.getElementById('menu-toggle');
