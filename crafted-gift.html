@@ -106,29 +106,61 @@
     .line-reveal:hover::after {
         width: 100%;
     }
+
+    /* Nav dual-mode: transparent over hero, solid on scroll */
+    .nav-brand,
+    .nav-link,
+    .nav-btn,
+    .nav-toggle,
+    .nav-accent {
+        transition: color 0.5s ease, border-color 0.5s ease, background-color 0.5s ease;
+    }
+    #navbar.nav-transparent .nav-accent {
+        background-color: #D4BC97;
+    }
+    #navbar.nav-transparent .nav-brand {
+        color: #FFFFFF;
+    }
+    #navbar.nav-transparent .nav-link {
+        color: rgba(255,255,255,0.7);
+    }
+    #navbar.nav-transparent .nav-link:hover {
+        color: #FFFFFF;
+    }
+    #navbar.nav-transparent .nav-btn {
+        border-color: rgba(255,255,255,0.3);
+        color: #FFFFFF;
+    }
+    #navbar.nav-transparent .nav-btn:hover {
+        background-color: #FFFFFF;
+        color: #2C2C2C;
+    }
+    #navbar.nav-transparent .nav-toggle {
+        color: #FFFFFF;
+    }
 </style>
 </head>
 
 <body class="bg-cream font-sans text-charcoal antialiased overflow-x-hidden">
 
 <!-- Navigation -->
-<nav class="fixed top-0 z-50 w-full max-w-[100vw] overflow-x-hidden transition-all duration-500" id="navbar">
+<nav class="fixed top-0 z-50 w-full max-w-[100vw] overflow-x-hidden transition-all duration-500 nav-transparent" id="navbar">
     <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-12">
         <a href="#" class="flex items-center gap-3">
-            <div class="h-8 w-[1px] bg-brass"></div>
-            <span class="font-serif text-2xl font-600 tracking-wide text-charcoal">Crafted Gift</span>
+            <div class="nav-accent h-8 w-[1px] bg-brass"></div>
+            <span class="nav-brand font-serif text-2xl font-600 tracking-wide text-charcoal">Crafted Gift</span>
         </a>
         <div class="hidden items-center gap-10 md:flex">
-            <a class="line-reveal text-xs font-medium uppercase tracking-widest-custom text-charcoal/70 hover:text-charcoal transition-colors pb-1" href="#collections">Collections</a>
-            <a class="line-reveal text-xs font-medium uppercase tracking-widest-custom text-charcoal/70 hover:text-charcoal transition-colors pb-1" href="#story">Our Story</a>
-            <a class="line-reveal text-xs font-medium uppercase tracking-widest-custom text-charcoal/70 hover:text-charcoal transition-colors pb-1" href="#bestsellers">Shop</a>
-            <a class="line-reveal text-xs font-medium uppercase tracking-widest-custom text-charcoal/70 hover:text-charcoal transition-colors pb-1" href="#contact">Contact</a>
+            <a class="nav-link line-reveal text-xs font-medium uppercase tracking-widest-custom text-charcoal/70 hover:text-charcoal transition-colors pb-1" href="#collections">Collections</a>
+            <a class="nav-link line-reveal text-xs font-medium uppercase tracking-widest-custom text-charcoal/70 hover:text-charcoal transition-colors pb-1" href="#story">Our Story</a>
+            <a class="nav-link line-reveal text-xs font-medium uppercase tracking-widest-custom text-charcoal/70 hover:text-charcoal transition-colors pb-1" href="#bestsellers">Shop</a>
+            <a class="nav-link line-reveal text-xs font-medium uppercase tracking-widest-custom text-charcoal/70 hover:text-charcoal transition-colors pb-1" href="#contact">Contact</a>
         </div>
         <div class="flex items-center gap-5">
-            <a href="#bestsellers" class="hidden md:inline-flex items-center justify-center border border-charcoal/20 px-6 py-2.5 text-xs font-medium uppercase tracking-widest-custom text-charcoal transition-all hover:bg-charcoal hover:text-cream">
+            <a href="#bestsellers" class="nav-btn hidden md:inline-flex items-center justify-center border border-charcoal/20 px-6 py-2.5 text-xs font-medium uppercase tracking-widest-custom text-charcoal transition-all hover:bg-charcoal hover:text-cream">
                 Shop Now
             </a>
-            <button class="flex md:hidden h-10 w-10 items-center justify-center text-charcoal" id="menu-toggle">
+            <button class="nav-toggle flex md:hidden h-10 w-10 items-center justify-center text-charcoal" id="menu-toggle">
                 <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                     <path d="M3 6h18M3 12h18M3 18h18"/>
                 </svg>
@@ -151,7 +183,7 @@
     <div class="absolute inset-0 z-0">
         <div class="h-full w-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=1920&q=80'); filter: brightness(0.45) saturate(0.85);"></div>
     </div>
-    <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/20 via-transparent to-black/40"></div>
+    <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/50 via-black/5 to-black/40"></div>
     <div class="relative z-20 flex h-full flex-col items-center justify-center px-6 text-center">
         <div class="fade-in mb-8 flex items-center gap-6 text-cream/60">
             <span class="h-[1px] w-16 bg-brass-light"></span>
@@ -659,10 +691,12 @@ window.addEventListener('scroll', () => {
         navbar.style.backgroundColor = 'rgba(250, 248, 245, 0.97)';
         navbar.style.backdropFilter = 'blur(12px)';
         navbar.style.borderBottom = '1px solid rgba(44, 44, 44, 0.06)';
+        navbar.classList.remove('nav-transparent');
     } else {
         navbar.style.backgroundColor = 'transparent';
         navbar.style.backdropFilter = 'none';
         navbar.style.borderBottom = '1px solid transparent';
+        navbar.classList.add('nav-transparent');
     }
 
     lastScroll = currentScroll;
