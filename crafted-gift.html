@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Crafted Gift - Handcrafted Gifts for Every Occasion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    "cream": "#FAF8F5",
+                    "cream-dark": "#F2EDE7",
+                    "warm-ivory": "#EDE8E0",
+                    "brass": "#B8956A",
+                    "brass-light": "#D4BC97",
+                    "brass-dark": "#96744A",
+                    "forest": "#2D4739",
+                    "forest-light": "#3D6350",
+                    "charcoal": "#2C2C2C",
+                    "charcoal-light": "#4A4A4A",
+                    "stone-warm": "#8C7E72",
+                },
+                fontFamily: {
+                    "serif": ["Cormorant Garamond", "Georgia", "serif"],
+                    "sans": ["DM Sans", "system-ui", "sans-serif"],
+                },
+                letterSpacing: {
+                    "widest-custom": "0.25em",
+                },
+            },
+        },
+    }
+</script>
+<style>
+    html { scroll-behavior: smooth; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #FAF8F5; }
+    ::-webkit-scrollbar-thumb { background: #B8956A; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #96744A; }
+
+    .fade-in {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .fade-in-left {
+        opacity: 0;
+        transform: translateX(-32px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    .fade-in-right {
+        opacity: 0;
+        transform: translateX(32px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+
+    .parallax-hero {
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+    }
+    @media (max-width: 768px) {
+        .parallax-hero { background-attachment: scroll; }
+    }
+
+    .product-card:hover .product-image {
+        transform: scale(1.05);
+    }
+
+    .line-reveal {
+        position: relative;
+        overflow: hidden;
+    }
+    .line-reveal::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: #B8956A;
+        transition: width 0.6s ease;
+    }
+    .line-reveal:hover::after {
+        width: 100%;
+    }
+</style>
+</head>
+
+<body class="bg-cream font-sans text-charcoal antialiased overflow-x-hidden">
+
+<!-- Navigation -->
+<nav class="fixed top-0 z-50 w-full transition-all duration-500" id="navbar">
+    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-12">
+        <a href="#" class="flex items-center gap-3">
+            <div class="h-8 w-[1px] bg-brass"></div>
+            <span class="font-serif text-2xl font-600 tracking-wide text-charcoal">Crafted Gift</span>
+        </a>
+        <div class="hidden items-center gap-10 md:flex">
+            <a class="line-reveal text-xs font-medium uppercase tracking-widest-custom text-charcoal/70 hover:text-charcoal transition-colors pb-1" href="#collections">Collections</a>
+            <a class="line-reveal text-xs font-medium uppercase tracking-widest-custom text-charcoal/70 hover:text-charcoal transition-colors pb-1" href="#story">Our Story</a>
+            <a class="line-reveal text-xs font-medium uppercase tracking-widest-custom text-charcoal/70 hover:text-charcoal transition-colors pb-1" href="#bestsellers">Shop</a>
+            <a class="line-reveal text-xs font-medium uppercase tracking-widest-custom text-charcoal/70 hover:text-charcoal transition-colors pb-1" href="#contact">Contact</a>
+        </div>
+        <div class="flex items-center gap-5">
+            <a href="#bestsellers" class="hidden md:inline-flex items-center justify-center border border-charcoal/20 px-6 py-2.5 text-xs font-medium uppercase tracking-widest-custom text-charcoal transition-all hover:bg-charcoal hover:text-cream">
+                Shop Now
+            </a>
+            <button class="flex md:hidden h-10 w-10 items-center justify-center text-charcoal" id="menu-toggle">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path d="M3 6h18M3 12h18M3 18h18"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-cream/98 backdrop-blur-lg border-t border-charcoal/5" id="mobile-menu">
+        <div class="flex flex-col items-center gap-6 py-8">
+            <a class="text-xs font-medium uppercase tracking-widest-custom text-charcoal/70" href="#collections" onclick="closeMobileMenu()">Collections</a>
+            <a class="text-xs font-medium uppercase tracking-widest-custom text-charcoal/70" href="#story" onclick="closeMobileMenu()">Our Story</a>
+            <a class="text-xs font-medium uppercase tracking-widest-custom text-charcoal/70" href="#bestsellers" onclick="closeMobileMenu()">Shop</a>
+            <a class="text-xs font-medium uppercase tracking-widest-custom text-charcoal/70" href="#contact" onclick="closeMobileMenu()">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="relative h-screen w-full overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <div class="h-full w-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=1920&q=80'); filter: brightness(0.45) saturate(0.85);"></div>
+    </div>
+    <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/20 via-transparent to-black/40"></div>
+    <div class="relative z-20 flex h-full flex-col items-center justify-center px-6 text-center">
+        <div class="fade-in mb-8 flex items-center gap-6 text-cream/60">
+            <span class="h-[1px] w-16 bg-brass-light"></span>
+            <span class="text-xs font-sans font-medium uppercase tracking-widest-custom text-brass-light">Handcrafted with Care</span>
+            <span class="h-[1px] w-16 bg-brass-light"></span>
+        </div>
+        <h1 class="fade-in stagger-1 font-serif text-5xl font-500 leading-[1.1] text-white md:text-7xl lg:text-8xl max-w-4xl">
+            Gifts That Tell<br/>
+            <em class="text-brass-light">a Story</em>
+        </h1>
+        <p class="fade-in stagger-2 mt-8 max-w-lg font-sans text-base font-light leading-relaxed text-white/75 md:text-lg">
+            Every piece in our collection is handcrafted by skilled artisans, made to be treasured for years to come.
+        </p>
+        <div class="fade-in stagger-3 mt-12 flex flex-col gap-4 sm:flex-row">
+            <a href="#collections" class="inline-flex items-center justify-center bg-brass px-10 py-4 text-xs font-sans font-medium uppercase tracking-widest-custom text-white transition-all hover:bg-brass-dark">
+                Explore Collections
+            </a>
+            <a href="#story" class="inline-flex items-center justify-center border border-white/30 px-10 py-4 text-xs font-sans font-medium uppercase tracking-widest-custom text-white transition-all hover:bg-white/10">
+                Our Story
+            </a>
+        </div>
+    </div>
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2">
+        <span class="text-[10px] font-sans uppercase tracking-widest text-white/40">Scroll</span>
+        <div class="h-10 w-[1px] bg-gradient-to-b from-white/40 to-transparent"></div>
+    </div>
+</section>
+
+<!-- Brand Statement -->
+<section class="py-24 lg:py-32 bg-cream">
+    <div class="mx-auto max-w-4xl px-6 text-center">
+        <div class="fade-in">
+            <span class="inline-block h-12 w-[1px] bg-brass/50 mb-8"></span>
+            <p class="font-serif text-2xl font-400 leading-relaxed text-charcoal/80 md:text-3xl lg:text-4xl">
+                We believe the most meaningful gifts are those made by human hands &mdash;
+                imperfect, intentional, and infused with the warmth of their maker.
+            </p>
+            <span class="inline-block h-12 w-[1px] bg-brass/50 mt-8"></span>
+        </div>
+    </div>
+</section>
+
+<!-- Collections Section -->
+<section class="py-24 lg:py-32 bg-cream-dark" id="collections">
+    <div class="mx-auto max-w-7xl px-6 lg:px-12">
+        <div class="fade-in mb-20 max-w-2xl">
+            <span class="text-xs font-sans font-medium uppercase tracking-widest-custom text-brass mb-4 block">Our Collections</span>
+            <h2 class="font-serif text-4xl font-500 text-charcoal md:text-5xl">Curated for Every<br/>Occasion</h2>
+            <div class="mt-6 h-[1px] w-20 bg-brass"></div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <!-- Collection 1: Ceramics -->
+            <a href="#" class="fade-in stagger-1 group relative block aspect-[3/4] overflow-hidden">
+                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=800&q=80');"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-8">
+                    <span class="text-[10px] font-sans font-medium uppercase tracking-widest-custom text-brass-light mb-2 block">12 Pieces</span>
+                    <h3 class="font-serif text-2xl font-500 text-white mb-1">Artisan Ceramics</h3>
+                    <p class="text-sm text-white/60 font-light">Hand-thrown bowls, mugs, and vases with organic glazes</p>
+                    <div class="mt-4 flex items-center gap-2 text-brass-light text-xs font-medium uppercase tracking-widest-custom opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                        <span>View Collection</span>
+                        <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Collection 2: Candles & Scents -->
+            <a href="#" class="fade-in stagger-2 group relative block aspect-[3/4] overflow-hidden">
+                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1602028915047-37269d1a73f7?w=800&q=80');"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-8">
+                    <span class="text-[10px] font-sans font-medium uppercase tracking-widest-custom text-brass-light mb-2 block">8 Pieces</span>
+                    <h3 class="font-serif text-2xl font-500 text-white mb-1">Candles &amp; Scents</h3>
+                    <p class="text-sm text-white/60 font-light">Hand-poured soy candles with botanical fragrances</p>
+                    <div class="mt-4 flex items-center gap-2 text-brass-light text-xs font-medium uppercase tracking-widest-custom opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                        <span>View Collection</span>
+                        <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Collection 3: Leather Goods -->
+            <a href="#" class="fade-in stagger-3 group relative block aspect-[3/4] overflow-hidden">
+                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&q=80');"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-8">
+                    <span class="text-[10px] font-sans font-medium uppercase tracking-widest-custom text-brass-light mb-2 block">15 Pieces</span>
+                    <h3 class="font-serif text-2xl font-500 text-white mb-1">Leather Goods</h3>
+                    <p class="text-sm text-white/60 font-light">Vegetable-tanned wallets, journals, and accessories</p>
+                    <div class="mt-4 flex items-center gap-2 text-brass-light text-xs font-medium uppercase tracking-widest-custom opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                        <span>View Collection</span>
+                        <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Second Row -->
+        <div class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+            <!-- Collection 4: Textiles -->
+            <a href="#" class="fade-in group relative block aspect-[16/9] overflow-hidden">
+                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1544967082-d9d25d867d66?w=1200&q=80');"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-8">
+                    <span class="text-[10px] font-sans font-medium uppercase tracking-widest-custom text-brass-light mb-2 block">10 Pieces</span>
+                    <h3 class="font-serif text-2xl font-500 text-white mb-1">Woven Textiles</h3>
+                    <p class="text-sm text-white/60 font-light">Handwoven scarves, throws, and table linens</p>
+                    <div class="mt-4 flex items-center gap-2 text-brass-light text-xs font-medium uppercase tracking-widest-custom opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                        <span>View Collection</span>
+                        <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Collection 5: Gift Sets -->
+            <a href="#" class="fade-in group relative block aspect-[16/9] overflow-hidden">
+                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1549465220-1a8b9238f7e1?w=1200&q=80');"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-8">
+                    <span class="text-[10px] font-sans font-medium uppercase tracking-widest-custom text-brass-light mb-2 block">6 Sets</span>
+                    <h3 class="font-serif text-2xl font-500 text-white mb-1">Curated Gift Sets</h3>
+                    <p class="text-sm text-white/60 font-light">Thoughtfully paired collections, ready to gift</p>
+                    <div class="mt-4 flex items-center gap-2 text-brass-light text-xs font-medium uppercase tracking-widest-custom opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                        <span>View Collection</span>
+                        <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Our Story / Craftsmanship Section -->
+<section class="py-24 lg:py-32 bg-cream" id="story">
+    <div class="mx-auto max-w-7xl px-6 lg:px-12">
+        <div class="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24 items-center">
+            <!-- Image Side -->
+            <div class="fade-in-left relative">
+                <div class="relative">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img
+                            src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=800&q=80"
+                            alt="Artisan working on handcrafted goods"
+                            class="h-full w-full object-cover"
+                            style="filter: saturate(0.85);"
+                        />
+                    </div>
+                    <!-- Overlapping accent card -->
+                    <div class="absolute -bottom-6 -right-6 bg-forest p-8 max-w-[240px] hidden md:block">
+                        <p class="font-serif text-4xl font-500 text-brass-light leading-none mb-2">15+</p>
+                        <p class="text-xs font-sans uppercase tracking-widest-custom text-white/70">Years of Craftsmanship</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text Side -->
+            <div class="fade-in-right">
+                <span class="text-xs font-sans font-medium uppercase tracking-widest-custom text-brass mb-4 block">Our Story</span>
+                <h2 class="font-serif text-4xl font-500 text-charcoal md:text-5xl mb-8">Where Tradition<br/>Meets Intention</h2>
+
+                <div class="space-y-6 text-base leading-relaxed text-charcoal-light font-light">
+                    <p class="first-letter:float-left first-letter:mr-3 first-letter:font-serif first-letter:text-6xl first-letter:font-500 first-letter:text-brass first-letter:leading-[0.8]">
+                        Crafted Gift began in a small workshop with a simple belief: that the act of giving deserves the same care as the gift itself. Each piece in our collection is made by hand, using time-honoured techniques passed down through generations of artisans.
+                    </p>
+                    <p>
+                        We partner with independent craftspeople from around the world &mdash; ceramicists in the English countryside, leather workers in Tuscany, weavers in Oaxaca. Every collaboration is built on mutual respect and a shared commitment to quality over quantity.
+                    </p>
+                    <p>
+                        No mass production. No shortcuts. Just honest, beautiful objects made to be given and kept.
+                    </p>
+                </div>
+
+                <div class="mt-10 flex items-center gap-8">
+                    <div>
+                        <p class="font-serif text-3xl font-500 text-charcoal">40+</p>
+                        <p class="text-xs font-sans uppercase tracking-widest-custom text-stone-warm mt-1">Artisan Partners</p>
+                    </div>
+                    <div class="h-10 w-[1px] bg-charcoal/10"></div>
+                    <div>
+                        <p class="font-serif text-3xl font-500 text-charcoal">12</p>
+                        <p class="text-xs font-sans uppercase tracking-widest-custom text-stone-warm mt-1">Countries</p>
+                    </div>
+                    <div class="h-10 w-[1px] bg-charcoal/10"></div>
+                    <div>
+                        <p class="font-serif text-3xl font-500 text-charcoal">100%</p>
+                        <p class="text-xs font-sans uppercase tracking-widest-custom text-stone-warm mt-1">Handmade</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Process Strip -->
+<section class="bg-forest py-20 lg:py-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-12">
+        <div class="fade-in text-center mb-16">
+            <span class="text-xs font-sans font-medium uppercase tracking-widest-custom text-brass-light mb-4 block">Our Process</span>
+            <h2 class="font-serif text-3xl font-500 text-white md:text-4xl">From Workshop to Doorstep</h2>
+        </div>
+        <div class="grid grid-cols-1 gap-12 md:grid-cols-4">
+            <div class="fade-in stagger-1 text-center">
+                <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center border border-brass/30 text-brass-light">
+                    <span class="font-serif text-2xl">01</span>
+                </div>
+                <h3 class="font-serif text-lg font-500 text-white mb-3">Source</h3>
+                <p class="text-sm text-white/50 font-light leading-relaxed">We seek out the finest natural materials, ethically sourced from trusted suppliers.</p>
+            </div>
+            <div class="fade-in stagger-2 text-center">
+                <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center border border-brass/30 text-brass-light">
+                    <span class="font-serif text-2xl">02</span>
+                </div>
+                <h3 class="font-serif text-lg font-500 text-white mb-3">Craft</h3>
+                <p class="text-sm text-white/50 font-light leading-relaxed">Each piece is shaped, fired, stitched, or woven by hand in our artisans' workshops.</p>
+            </div>
+            <div class="fade-in stagger-3 text-center">
+                <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center border border-brass/30 text-brass-light">
+                    <span class="font-serif text-2xl">03</span>
+                </div>
+                <h3 class="font-serif text-lg font-500 text-white mb-3">Inspect</h3>
+                <p class="text-sm text-white/50 font-light leading-relaxed">Every item is carefully examined for quality before it earns our maker's mark.</p>
+            </div>
+            <div class="fade-in stagger-4 text-center">
+                <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center border border-brass/30 text-brass-light">
+                    <span class="font-serif text-2xl">04</span>
+                </div>
+                <h3 class="font-serif text-lg font-500 text-white mb-3">Wrap</h3>
+                <p class="text-sm text-white/50 font-light leading-relaxed">Presented in sustainable packaging, ready to delight whoever receives it.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Best Sellers Section -->
+<section class="py-24 lg:py-32 bg-cream" id="bestsellers">
+    <div class="mx-auto max-w-7xl px-6 lg:px-12">
+        <div class="fade-in flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-6">
+            <div>
+                <span class="text-xs font-sans font-medium uppercase tracking-widest-custom text-brass mb-4 block">Featured</span>
+                <h2 class="font-serif text-4xl font-500 text-charcoal md:text-5xl">Best Sellers</h2>
+            </div>
+            <a href="#" class="line-reveal inline-flex items-center gap-2 text-xs font-sans font-medium uppercase tracking-widest-custom text-charcoal/60 hover:text-charcoal transition-colors pb-1">
+                View All Products
+                <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <!-- Product 1 -->
+            <div class="fade-in stagger-1 product-card group cursor-pointer">
+                <div class="relative aspect-[3/4] overflow-hidden bg-cream-dark mb-5">
+                    <div class="product-image h-full w-full bg-cover bg-center transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1612198188760-aac12fac0d3b?w=600&q=80');"></div>
+                </div>
+                <div>
+                    <h3 class="font-serif text-lg font-500 text-charcoal group-hover:text-brass-dark transition-colors">Stoneware Mug Set</h3>
+                    <p class="text-xs text-stone-warm mt-1 mb-3 font-light">Hand-thrown, ash-glazed ceramic</p>
+                    <div class="flex items-baseline justify-between">
+                        <span class="font-sans text-sm font-medium text-charcoal">$68</span>
+                        <span class="text-[10px] font-sans uppercase tracking-widest text-brass">In Stock</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="fade-in stagger-2 product-card group cursor-pointer">
+                <div class="relative aspect-[3/4] overflow-hidden bg-cream-dark mb-5">
+                    <div class="product-image h-full w-full bg-cover bg-center transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1602028915047-37269d1a73f7?w=600&q=80');"></div>
+                </div>
+                <div>
+                    <h3 class="font-serif text-lg font-500 text-charcoal group-hover:text-brass-dark transition-colors">Botanica Candle</h3>
+                    <p class="text-xs text-stone-warm mt-1 mb-3 font-light">Cedar, sage, and wild lavender</p>
+                    <div class="flex items-baseline justify-between">
+                        <span class="font-sans text-sm font-medium text-charcoal">$42</span>
+                        <span class="text-[10px] font-sans uppercase tracking-widest text-brass">In Stock</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="fade-in stagger-3 product-card group cursor-pointer">
+                <div class="relative aspect-[3/4] overflow-hidden bg-cream-dark mb-5">
+                    <div class="product-image h-full w-full bg-cover bg-center transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600&q=80');"></div>
+                </div>
+                <div>
+                    <h3 class="font-serif text-lg font-500 text-charcoal group-hover:text-brass-dark transition-colors">Leather Journal</h3>
+                    <p class="text-xs text-stone-warm mt-1 mb-3 font-light">Vegetable-tanned, hand-stitched</p>
+                    <div class="flex items-baseline justify-between">
+                        <span class="font-sans text-sm font-medium text-charcoal">$85</span>
+                        <span class="text-[10px] font-sans uppercase tracking-widest text-brass">In Stock</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="fade-in stagger-4 product-card group cursor-pointer">
+                <div class="relative aspect-[3/4] overflow-hidden bg-cream-dark mb-5">
+                    <div class="product-image h-full w-full bg-cover bg-center transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=600&q=80');"></div>
+                </div>
+                <div>
+                    <h3 class="font-serif text-lg font-500 text-charcoal group-hover:text-brass-dark transition-colors">Linen Gift Bundle</h3>
+                    <p class="text-xs text-stone-warm mt-1 mb-3 font-light">Tea towel, apron, and napkin set</p>
+                    <div class="flex items-baseline justify-between">
+                        <span class="font-sans text-sm font-medium text-charcoal">$96</span>
+                        <span class="text-[10px] font-sans uppercase tracking-widest text-brass">In Stock</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-24 lg:py-32 bg-warm-ivory">
+    <div class="mx-auto max-w-7xl px-6 lg:px-12">
+        <div class="fade-in text-center mb-16">
+            <span class="text-xs font-sans font-medium uppercase tracking-widest-custom text-brass mb-4 block">Kind Words</span>
+            <h2 class="font-serif text-4xl font-500 text-charcoal md:text-5xl">From Our Customers</h2>
+        </div>
+
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+            <!-- Testimonial 1 -->
+            <div class="fade-in stagger-1 border-t border-charcoal/10 pt-8">
+                <div class="flex mb-4 gap-1">
+                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+                <blockquote class="font-serif text-lg font-400 text-charcoal leading-relaxed mb-6 italic">
+                    "I gave the ceramic set to my mother for her birthday. She cried. You can feel the love in every piece &mdash; the weight, the texture, the imperfections that make it perfect."
+                </blockquote>
+                <div>
+                    <p class="text-sm font-medium text-charcoal">Emma R.</p>
+                    <p class="text-xs text-stone-warm">London, UK</p>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="fade-in stagger-2 border-t border-charcoal/10 pt-8">
+                <div class="flex mb-4 gap-1">
+                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+                <blockquote class="font-serif text-lg font-400 text-charcoal leading-relaxed mb-6 italic">
+                    "The leather journal I ordered arrived in the most beautiful packaging. It felt like receiving a gift myself. The quality of the leather is outstanding &mdash; it will only get better with age."
+                </blockquote>
+                <div>
+                    <p class="text-sm font-medium text-charcoal">David K.</p>
+                    <p class="text-xs text-stone-warm">Melbourne, AU</p>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="fade-in stagger-3 border-t border-charcoal/10 pt-8">
+                <div class="flex mb-4 gap-1">
+                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+                <blockquote class="font-serif text-lg font-400 text-charcoal leading-relaxed mb-6 italic">
+                    "I ordered the curated gift set for my wife's anniversary. The attention to detail is remarkable. From the wrapping to the handwritten note &mdash; it felt deeply personal."
+                </blockquote>
+                <div>
+                    <p class="text-sm font-medium text-charcoal">Marcus T.</p>
+                    <p class="text-xs text-stone-warm">Toronto, CA</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Full Width Image Break -->
+<section class="relative h-[50vh] w-full overflow-hidden">
+    <div class="parallax-hero absolute inset-0 z-0" style="background-image: url('https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=1920&q=80'); filter: brightness(0.5) saturate(0.8);"></div>
+    <div class="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
+        <p class="fade-in font-serif text-3xl font-400 text-white md:text-5xl max-w-3xl leading-snug italic">
+            "A gift should be a little piece of someone's heart, wrapped in beauty."
+        </p>
+    </div>
+</section>
+
+<!-- Newsletter / CTA Section -->
+<section class="py-24 lg:py-32 bg-cream" id="contact">
+    <div class="mx-auto max-w-2xl px-6 text-center">
+        <div class="fade-in">
+            <span class="text-xs font-sans font-medium uppercase tracking-widest-custom text-brass mb-4 block">Stay Connected</span>
+            <h2 class="font-serif text-4xl font-500 text-charcoal md:text-5xl mb-6">Join Our World</h2>
+            <p class="text-base font-light leading-relaxed text-charcoal-light mb-10">
+                Receive early access to new collections, artisan stories, and exclusive offers. We write only when we have something worth sharing.
+            </p>
+            <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault();">
+                <input
+                    type="email"
+                    placeholder="Your email address"
+                    class="flex-1 border border-charcoal/15 bg-transparent px-5 py-3.5 text-sm font-sans text-charcoal placeholder:text-stone-warm/60 focus:border-brass focus:outline-none focus:ring-0 transition-colors"
+                />
+                <button type="submit" class="bg-charcoal px-8 py-3.5 text-xs font-sans font-medium uppercase tracking-widest-custom text-cream transition-all hover:bg-forest whitespace-nowrap">
+                    Subscribe
+                </button>
+            </form>
+            <p class="mt-4 text-[11px] text-stone-warm">No spam, ever. Unsubscribe anytime.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-charcoal text-white/70 pt-20 pb-10">
+    <div class="mx-auto max-w-7xl px-6 lg:px-12">
+        <div class="grid grid-cols-1 gap-12 md:grid-cols-4 lg:gap-16 mb-16">
+            <!-- Brand -->
+            <div class="md:col-span-2 lg:col-span-1">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="h-6 w-[1px] bg-brass"></div>
+                    <h3 class="font-serif text-xl font-500 text-white">Crafted Gift</h3>
+                </div>
+                <p class="text-sm font-light leading-relaxed text-white/50 max-w-xs">
+                    Handcrafted gifts made with intention. Every piece tells a story of skill, tradition, and care.
+                </p>
+            </div>
+
+            <!-- Shop -->
+            <div>
+                <h4 class="text-[10px] font-sans font-medium uppercase tracking-widest-custom text-brass mb-5">Shop</h4>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-sm text-white/50 hover:text-white transition-colors font-light">All Products</a></li>
+                    <li><a href="#" class="text-sm text-white/50 hover:text-white transition-colors font-light">Ceramics</a></li>
+                    <li><a href="#" class="text-sm text-white/50 hover:text-white transition-colors font-light">Candles</a></li>
+                    <li><a href="#" class="text-sm text-white/50 hover:text-white transition-colors font-light">Leather Goods</a></li>
+                    <li><a href="#" class="text-sm text-white/50 hover:text-white transition-colors font-light">Gift Sets</a></li>
+                </ul>
+            </div>
+
+            <!-- Company -->
+            <div>
+                <h4 class="text-[10px] font-sans font-medium uppercase tracking-widest-custom text-brass mb-5">Company</h4>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-sm text-white/50 hover:text-white transition-colors font-light">Our Story</a></li>
+                    <li><a href="#" class="text-sm text-white/50 hover:text-white transition-colors font-light">Artisan Partners</a></li>
+                    <li><a href="#" class="text-sm text-white/50 hover:text-white transition-colors font-light">Sustainability</a></li>
+                    <li><a href="#" class="text-sm text-white/50 hover:text-white transition-colors font-light">Press</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h4 class="text-[10px] font-sans font-medium uppercase tracking-widest-custom text-brass mb-5">Contact</h4>
+                <address class="not-italic space-y-3">
+                    <p class="text-sm text-white/50 font-light">24 Artisan Lane<br/>Shoreditch, London E1 6QR</p>
+                    <p class="text-sm text-white/50 font-light">hello@craftedgift.com</p>
+                    <p class="text-sm text-white/50 font-light">+44 20 7946 0958</p>
+                </address>
+            </div>
+        </div>
+
+        <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-xs text-white/30">&copy; 2026 Crafted Gift. All rights reserved.</p>
+            <div class="flex items-center gap-6">
+                <a href="#" class="text-white/30 hover:text-brass transition-colors">
+                    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"/></svg>
+                </a>
+                <a href="#" class="text-white/30 hover:text-brass transition-colors">
+                    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19.633 7.997c.013.175.013.349.013.523 0 5.325-4.053 11.461-11.46 11.461-2.282 0-4.402-.661-6.186-1.809.324.037.636.05.973.05a8.07 8.07 0 005.001-1.721 4.036 4.036 0 01-3.767-2.793c.249.037.499.062.761.062.361 0 .724-.05 1.061-.137a4.027 4.027 0 01-3.23-3.953v-.05c.537.299 1.16.486 1.82.511a4.022 4.022 0 01-1.796-3.354c0-.748.199-1.434.548-2.032a11.457 11.457 0 008.306 4.215c-.062-.3-.1-.611-.1-.923a4.026 4.026 0 014.028-4.028c1.16 0 2.207.486 2.943 1.272a7.957 7.957 0 002.556-.973 4.02 4.02 0 01-1.771 2.22 8.073 8.073 0 002.319-.624 8.645 8.645 0 01-2.019 2.083z"/></svg>
+                </a>
+                <a href="#" class="text-white/30 hover:text-brass transition-colors">
+                    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.137 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Intersection Observer for fade-in animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
+    observer.observe(el);
+});
+
+// Navbar scroll behavior
+const navbar = document.getElementById('navbar');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+
+    if (currentScroll > 80) {
+        navbar.style.backgroundColor = 'rgba(250, 248, 245, 0.97)';
+        navbar.style.backdropFilter = 'blur(12px)';
+        navbar.style.borderBottom = '1px solid rgba(44, 44, 44, 0.06)';
+    } else {
+        navbar.style.backgroundColor = 'transparent';
+        navbar.style.backdropFilter = 'none';
+        navbar.style.borderBottom = '1px solid transparent';
+    }
+
+    lastScroll = currentScroll;
+});
+
+// Mobile menu toggle
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+
+menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+});
+
+function closeMobileMenu() {
+    mobileMenu.classList.add('hidden');
+}
+</script>
+
+</body>
+</html>
