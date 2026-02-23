@@ -37,7 +37,7 @@
     }
 </script>
 <style>
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
 
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #FAF8F5; }
@@ -112,7 +112,7 @@
 <body class="bg-cream font-sans text-charcoal antialiased overflow-x-hidden">
 
 <!-- Navigation -->
-<nav class="fixed top-0 z-50 w-full transition-all duration-500" id="navbar">
+<nav class="fixed top-0 z-50 w-full max-w-[100vw] overflow-x-hidden transition-all duration-500" id="navbar">
     <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-12">
         <a href="#" class="flex items-center gap-3">
             <div class="h-8 w-[1px] bg-brass"></div>
@@ -137,7 +137,7 @@
     </div>
     <!-- Mobile menu -->
     <div class="hidden md:hidden bg-cream/98 backdrop-blur-lg border-t border-charcoal/5" id="mobile-menu">
-        <div class="flex flex-col items-center gap-6 py-8">
+        <div class="flex flex-col items-center gap-6 px-6 py-8">
             <a class="text-xs font-medium uppercase tracking-widest-custom text-charcoal/70" href="#collections" onclick="closeMobileMenu()">Collections</a>
             <a class="text-xs font-medium uppercase tracking-widest-custom text-charcoal/70" href="#story" onclick="closeMobileMenu()">Our Story</a>
             <a class="text-xs font-medium uppercase tracking-widest-custom text-charcoal/70" href="#bestsellers" onclick="closeMobileMenu()">Shop</a>
@@ -326,7 +326,7 @@
                     </p>
                 </div>
 
-                <div class="mt-10 flex items-center gap-8">
+                <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
                     <div>
                         <p class="font-serif text-3xl font-500 text-charcoal">40+</p>
                         <p class="text-xs font-sans uppercase tracking-widest-custom text-stone-warm mt-1">Artisan Partners</p>
