@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Collections - Crafted Gift</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    "cream": "#FAF8F5",
+                    "cream-dark": "#F2EDE7",
+                    "warm-ivory": "#EDE8E0",
+                    "brass": "#B8956A",
+                    "brass-light": "#D4BC97",
+                    "brass-dark": "#96744A",
+                    "forest": "#2D4739",
+                    "forest-light": "#3D6350",
+                    "charcoal": "#2C2C2C",
+                    "charcoal-light": "#4A4A4A",
+                    "stone-warm": "#8C7E72",
+                },
+                fontFamily: {
+                    "serif": ["Cormorant Garamond", "Georgia", "serif"],
+                    "sans": ["DM Sans", "system-ui", "sans-serif"],
+                },
+                letterSpacing: {
+                    "widest-custom": "0.25em",
+                },
+            },
+        },
+    }
+</script>
+<style>
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #FAF8F5; }
+    ::-webkit-scrollbar-thumb { background: #B8956A; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #96744A; }
+
+    .fade-in {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .stagger-1 { transition-delay: 0.05s; }
+    .stagger-2 { transition-delay: 0.1s; }
+    .stagger-3 { transition-delay: 0.15s; }
+    .stagger-4 { transition-delay: 0.2s; }
+    .stagger-5 { transition-delay: 0.25s; }
+    .stagger-6 { transition-delay: 0.3s; }
+    .stagger-7 { transition-delay: 0.35s; }
+    .stagger-8 { transition-delay: 0.4s; }
+
+    .btn-hover {
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn-hover:hover {
+        transform: scale(1.03);
+        box-shadow: 0 6px 24px rgba(44, 44, 44, 0.12);
+    }
+    .btn-hover:active {
+        transform: scale(0.98);
+        box-shadow: 0 2px 8px rgba(44, 44, 44, 0.08);
+    }
+
+    .product-card {
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .product-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 40px rgba(44, 44, 44, 0.1);
+    }
+    .product-card:hover .product-image {
+        transform: scale(1.05);
+    }
+    .product-card .product-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(44, 44, 44, 0.35);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    .product-card:hover .product-overlay {
+        opacity: 1;
+    }
+    .product-card:hover .product-name {
+        color: #96744A;
+    }
+
+    .line-reveal {
+        position: relative;
+        overflow: hidden;
+    }
+    .line-reveal::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: #B8956A;
+        transition: width 0.6s ease;
+    }
+    .line-reveal:hover::after {
+        width: 100%;
+    }
+
+    .filter-btn {
+        transition: all 0.3s ease;
+    }
+    .filter-btn.active {
+        color: #2C2C2C;
+        border-color: #B8956A;
+    }
+    .filter-btn:not(.active):hover {
+        color: #2C2C2C;
+        border-color: rgba(44, 44, 44, 0.3);
+    }
+
+    /* Product grid animation */
+    .product-card.hiding {
+        opacity: 0;
+        transform: scale(0.92) translateY(12px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .product-card.showing {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+</style>
+</head>
+
+<body class="bg-cream font-sans text-charcoal antialiased overflow-x-hidden">
+
+<!-- Navigation -->
+<nav class="fixed top-0 z-50 w-full max-w-[100vw] overflow-x-hidden transition-all duration-500" id="navbar" style="background-color: rgba(250, 248, 245, 0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(44, 44, 44, 0.06);">
+    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-12">
+        <a href="crafted-gift.html" class="flex items-center gap-3">
+            <div class="h-8 w-[1px] bg-brass"></div>
+            <span class="font-serif text-2xl font-600 tracking-wide text-charcoal">Crafted Gift</span>
+        </a>
+        <div class="hidden items-center gap-10 md:flex">
+            <a class="line-reveal text-xs font-medium uppercase tracking-widest-custom text-charcoal/70 hover:text-charcoal transition-colors pb-1" href="crafted-gift.html#collections">Collections</a>
+            <a class="line-reveal text-xs font-medium uppercase tracking-widest-custom text-charcoal/70 hover:text-charcoal transition-colors pb-1" href="crafted-gift.html#story">Our Story</a>
+            <a class="line-reveal text-xs font-medium uppercase tracking-widest-custom text-charcoal/70 hover:text-charcoal transition-colors pb-1" href="crafted-gift.html#bestsellers">Shop</a>
+            <a class="line-reveal text-xs font-medium uppercase tracking-widest-custom text-charcoal/70 hover:text-charcoal transition-colors pb-1" href="crafted-gift.html#contact">Contact</a>
+        </div>
+        <div class="flex items-center gap-5">
+            <a href="crafted-gift.html#bestsellers" class="btn-hover hidden md:inline-flex items-center justify-center border border-charcoal/20 px-6 py-2.5 text-xs font-medium uppercase tracking-widest-custom text-charcoal transition-all hover:bg-charcoal hover:text-cream">
+                Shop Now
+            </a>
+            <button class="flex md:hidden h-10 w-10 items-center justify-center text-charcoal" id="menu-toggle">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path d="M3 6h18M3 12h18M3 18h18"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-cream/98 backdrop-blur-lg border-t border-charcoal/5" id="mobile-menu">
+        <div class="flex flex-col items-center gap-6 px-6 py-8">
+            <a class="text-xs font-medium uppercase tracking-widest-custom text-charcoal/70" href="crafted-gift.html#collections" onclick="closeMobileMenu()">Collections</a>
+            <a class="text-xs font-medium uppercase tracking-widest-custom text-charcoal/70" href="crafted-gift.html#story" onclick="closeMobileMenu()">Our Story</a>
+            <a class="text-xs font-medium uppercase tracking-widest-custom text-charcoal/70" href="crafted-gift.html#bestsellers" onclick="closeMobileMenu()">Shop</a>
+            <a class="text-xs font-medium uppercase tracking-widest-custom text-charcoal/70" href="crafted-gift.html#contact" onclick="closeMobileMenu()">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<section class="pt-32 pb-12 lg:pt-40 lg:pb-16 bg-cream-dark">
+    <div class="mx-auto max-w-7xl px-6 lg:px-12">
+        <div class="fade-in">
+            <nav class="mb-6 flex items-center gap-2 text-xs font-sans text-stone-warm">
+                <a href="crafted-gift.html" class="hover:text-charcoal transition-colors">Home</a>
+                <svg class="h-3 w-3 text-charcoal/30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+                <span class="text-charcoal">Collections</span>
+            </nav>
+            <span class="text-xs font-sans font-medium uppercase tracking-widest-custom text-brass mb-4 block">Browse</span>
+            <h1 class="font-serif text-4xl font-500 text-charcoal md:text-5xl lg:text-6xl">Our Collections</h1>
+            <p class="mt-4 max-w-xl text-base font-light leading-relaxed text-charcoal-light">
+                Every piece in our collection is handcrafted by skilled artisans. Browse by category or explore them all.
+            </p>
+            <div class="mt-6 h-[1px] w-20 bg-brass"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Filter Bar + Product Grid -->
+<section class="py-16 lg:py-24 bg-cream" id="products">
+    <div class="mx-auto max-w-7xl px-6 lg:px-12">
+
+        <!-- Filter / Sort Bar -->
+        <div class="fade-in flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-14 pb-8 border-b border-charcoal/8">
+            <div class="flex flex-wrap items-center gap-3" id="filter-buttons">
+                <button class="filter-btn active border border-brass px-5 py-2 text-xs font-sans font-medium uppercase tracking-widest-custom text-charcoal" data-category="all">
+                    All
+                </button>
+                <button class="filter-btn border border-charcoal/15 px-5 py-2 text-xs font-sans font-medium uppercase tracking-widest-custom text-charcoal/50" data-category="ceramics">
+                    Ceramics
+                </button>
+                <button class="filter-btn border border-charcoal/15 px-5 py-2 text-xs font-sans font-medium uppercase tracking-widest-custom text-charcoal/50" data-category="candles">
+                    Candles &amp; Scents
+                </button>
+                <button class="filter-btn border border-charcoal/15 px-5 py-2 text-xs font-sans font-medium uppercase tracking-widest-custom text-charcoal/50" data-category="leather">
+                    Leather Goods
+                </button>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-stone-warm">
+                <span id="product-count">12</span>
+                <span>products</span>
+            </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" id="product-grid">
+        </div>
+
+        <!-- Empty state -->
+        <div class="hidden text-center py-20" id="empty-state">
+            <p class="font-serif text-2xl text-charcoal/40">No products found</p>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Banner -->
+<section class="bg-forest py-20 lg:py-24">
+    <div class="mx-auto max-w-3xl px-6 text-center">
+        <div class="fade-in">
+            <span class="text-xs font-sans font-medium uppercase tracking-widest-custom text-brass-light mb-4 block">Handcrafted with Care</span>
+            <h2 class="font-serif text-3xl font-500 text-white md:text-4xl mb-6">Can't Decide? Let Us Help.</h2>
+            <p class="text-base font-light leading-relaxed text-white/60 mb-10 max-w-lg mx-auto">
+                Reach out and we'll help you find the perfect handcrafted gift for any occasion.
+            </p>
+            <a href="crafted-gift.html#contact" class="btn-hover inline-flex items-center justify-center bg-brass px-10 py-4 text-xs font-sans font-medium uppercase tracking-widest-custom text-white transition-all hover:bg-brass-dark">
+                Get in Touch
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-charcoal text-white/70 pt-20 pb-10">
+    <div class="mx-auto max-w-7xl px-6 lg:px-12">
+        <div class="grid grid-cols-1 gap-12 md:grid-cols-4 lg:gap-16 mb-16">
+            <!-- Brand -->
+            <div class="md:col-span-2 lg:col-span-1">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="h-6 w-[1px] bg-brass"></div>
+                    <h3 class="font-serif text-xl font-500 text-white">Crafted Gift</h3>
+                </div>
+                <p class="text-sm font-light leading-relaxed text-white/50 max-w-xs">
+                    Handcrafted gifts made with intention. Every piece tells a story of skill, tradition, and care.
+                </p>
+            </div>
+
+            <!-- Shop -->
+            <div>
+                <h4 class="text-[10px] font-sans font-medium uppercase tracking-widest-custom text-brass mb-5">Shop</h4>
+                <ul class="space-y-3">
+                    <li><a href="collections.html" class="text-sm text-white/50 hover:text-white transition-colors font-light">All Products</a></li>
+                    <li><a href="collections.html?category=ceramics" class="text-sm text-white/50 hover:text-white transition-colors font-light">Ceramics</a></li>
+                    <li><a href="collections.html?category=candles" class="text-sm text-white/50 hover:text-white transition-colors font-light">Candles</a></li>
+                    <li><a href="collections.html?category=leather" class="text-sm text-white/50 hover:text-white transition-colors font-light">Leather Goods</a></li>
+                </ul>
+            </div>
+
+            <!-- Company -->
+            <div>
+                <h4 class="text-[10px] font-sans font-medium uppercase tracking-widest-custom text-brass mb-5">Company</h4>
+                <ul class="space-y-3">
+                    <li><a href="crafted-gift.html#story" class="text-sm text-white/50 hover:text-white transition-colors font-light">Our Story</a></li>
+                    <li><a href="#" class="text-sm text-white/50 hover:text-white transition-colors font-light">Artisan Partners</a></li>
+                    <li><a href="#" class="text-sm text-white/50 hover:text-white transition-colors font-light">Sustainability</a></li>
+                    <li><a href="#" class="text-sm text-white/50 hover:text-white transition-colors font-light">Press</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h4 class="text-[10px] font-sans font-medium uppercase tracking-widest-custom text-brass mb-5">Contact</h4>
+                <address class="not-italic space-y-3">
+                    <p class="text-sm text-white/50 font-light">24 Artisan Lane<br/>Shoreditch, London E1 6QR</p>
+                    <p class="text-sm text-white/50 font-light">hello@craftedgift.com</p>
+                    <p class="text-sm text-white/50 font-light">+44 20 7946 0958</p>
+                </address>
+            </div>
+        </div>
+
+        <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-xs text-white/30">&copy; 2026 Crafted Gift. All rights reserved.</p>
+            <div class="flex items-center gap-6">
+                <a href="#" class="text-white/30 hover:text-brass transition-colors">
+                    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"/></svg>
+                </a>
+                <a href="#" class="text-white/30 hover:text-brass transition-colors">
+                    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19.633 7.997c.013.175.013.349.013.523 0 5.325-4.053 11.461-11.46 11.461-2.282 0-4.402-.661-6.186-1.809.324.037.636.05.973.05a8.07 8.07 0 005.001-1.721 4.036 4.036 0 01-3.767-2.793c.249.037.499.062.761.062.361 0 .724-.05 1.061-.137a4.027 4.027 0 01-3.23-3.953v-.05c.537.299 1.16.486 1.82.511a4.022 4.022 0 01-1.796-3.354c0-.748.199-1.434.548-2.032a11.457 11.457 0 008.306 4.215c-.062-.3-.1-.611-.1-.923a4.026 4.026 0 014.028-4.028c1.16 0 2.207.486 2.943 1.272a7.957 7.957 0 002.556-.973 4.02 4.02 0 01-1.771 2.22 8.073 8.073 0 002.319-.624 8.645 8.645 0 01-2.019 2.083z"/></svg>
+                </a>
+                <a href="#" class="text-white/30 hover:text-brass transition-colors">
+                    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.137 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Product data
+const products = [
+    // Ceramics
+    {
+        id: 1,
+        name: "Stoneware Mug Set",
+        description: "Hand-thrown, ash-glazed ceramic",
+        price: 68,
+        category: "ceramics",
+        image: "https://images.unsplash.com/photo-1612198188760-aac12fac0d3b?w=600&q=80",
+        badge: null,
+    },
+    {
+        id: 2,
+        name: "Terracotta Serving Bowl",
+        description: "Wheel-thrown with reactive glaze finish",
+        price: 54,
+        category: "ceramics",
+        image: "https://images.unsplash.com/photo-1610701596007-11502f7f2267?w=600&q=80",
+        badge: null,
+    },
+    {
+        id: 3,
+        name: "Porcelain Vase",
+        description: "Minimalist form, hand-dipped glaze",
+        price: 92,
+        category: "ceramics",
+        image: "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=600&q=80",
+        badge: "New",
+    },
+    {
+        id: 4,
+        name: "Ceramic Planter Trio",
+        description: "Matte finish, drainage holes included",
+        price: 78,
+        category: "ceramics",
+        image: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=600&q=80",
+        badge: null,
+    },
+    // Candles & Scents
+    {
+        id: 5,
+        name: "Botanica Candle",
+        description: "Cedar, sage, and wild lavender",
+        price: 42,
+        category: "candles",
+        image: "https://images.unsplash.com/photo-1602028915047-37269d1a73f7?w=600&q=80",
+        badge: "Best Seller",
+    },
+    {
+        id: 6,
+        name: "Amber & Oud Candle",
+        description: "Warm amber, oud wood, and vanilla",
+        price: 48,
+        category: "candles",
+        image: "https://images.unsplash.com/photo-1603905179580-93e76fe0073e?w=600&q=80",
+        badge: null,
+    },
+    {
+        id: 7,
+        name: "Fig & Olive Candle",
+        description: "Mediterranean fig, olive leaf, and sea salt",
+        price: 42,
+        category: "candles",
+        image: "https://images.unsplash.com/photo-1572726729207-a78d6feb18d7?w=600&q=80",
+        badge: null,
+    },
+    {
+        id: 8,
+        name: "Scented Wax Melts",
+        description: "Set of six botanical fragrances",
+        price: 28,
+        category: "candles",
+        image: "https://images.unsplash.com/photo-1599446220285-bdf4f150ada9?w=600&q=80",
+        badge: "New",
+    },
+    // Leather Goods
+    {
+        id: 9,
+        name: "Leather Journal",
+        description: "Vegetable-tanned, hand-stitched",
+        price: 85,
+        category: "leather",
+        image: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600&q=80",
+        badge: "Best Seller",
+    },
+    {
+        id: 10,
+        name: "Card Holder",
+        description: "Full-grain leather, saddle-stitched",
+        price: 38,
+        category: "leather",
+        image: "https://images.unsplash.com/photo-1627123424574-724758594e93?w=600&q=80",
+        badge: null,
+    },
+    {
+        id: 11,
+        name: "Leather Tote Bag",
+        description: "Vegetable-tanned, brass hardware",
+        price: 195,
+        category: "leather",
+        image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&q=80",
+        badge: null,
+    },
+    {
+        id: 12,
+        name: "Leather Keychain",
+        description: "Hand-stamped, solid brass ring",
+        price: 24,
+        category: "leather",
+        image: "https://images.unsplash.com/photo-1611923134239-b9be5816e23c?w=600&q=80",
+        badge: null,
+    },
+];
+
+const grid = document.getElementById('product-grid');
+const countEl = document.getElementById('product-count');
+const emptyState = document.getElementById('empty-state');
+const filterButtons = document.querySelectorAll('.filter-btn');
+let activeCategory = 'all';
+
+function createProductCard(product, index) {
+    const card = document.createElement('div');
+    card.className = 'fade-in product-card group cursor-pointer';
+    card.dataset.category = product.category;
+    card.style.transitionDelay = (index * 0.05) + 's';
+
+    const badgeHTML = product.badge
+        ? '<span class="absolute top-4 left-4 z-10 bg-' + (product.badge === 'New' ? 'forest' : 'brass') + ' px-3 py-1 text-[10px] font-sans font-medium uppercase tracking-widest-custom text-white">' + product.badge + '</span>'
+        : '';
+
+    card.innerHTML =
+        '<div class="relative aspect-[3/4] overflow-hidden bg-cream-dark mb-5">' +
+            badgeHTML +
+            '<div class="product-image h-full w-full bg-cover bg-center transition-transform duration-700" style="background-image: url(\'' + product.image + '\');"></div>' +
+            '<div class="product-overlay">' +
+                '<span class="text-xs font-sans font-medium uppercase tracking-widest-custom text-white border border-white/40 px-6 py-2.5">View Details</span>' +
+            '</div>' +
+        '</div>' +
+        '<div>' +
+            '<h3 class="product-name font-serif text-lg font-500 text-charcoal transition-colors">' + product.name + '</h3>' +
+            '<p class="text-xs text-stone-warm mt-1 mb-3 font-light">' + product.description + '</p>' +
+            '<div class="flex items-baseline justify-between">' +
+                '<span class="font-sans text-sm font-medium text-charcoal">$' + product.price + '</span>' +
+                '<span class="text-[10px] font-sans uppercase tracking-widest text-brass">In Stock</span>' +
+            '</div>' +
+        '</div>';
+
+    return card;
+}
+
+function renderProducts(category) {
+    const filtered = category === 'all'
+        ? products
+        : products.filter(function(p) { return p.category === category; });
+
+    // Clear grid
+    grid.innerHTML = '';
+
+    if (filtered.length === 0) {
+        emptyState.classList.remove('hidden');
+        grid.classList.add('hidden');
+    } else {
+        emptyState.classList.add('hidden');
+        grid.classList.remove('hidden');
+
+        filtered.forEach(function(product, index) {
+            var card = createProductCard(product, index);
+            grid.appendChild(card);
+        });
+
+        // Trigger fade-in after a brief delay
+        requestAnimationFrame(function() {
+            grid.querySelectorAll('.fade-in').forEach(function(el) {
+                observer.observe(el);
+            });
+        });
+    }
+
+    countEl.textContent = filtered.length;
+}
+
+function setActiveFilter(category) {
+    activeCategory = category;
+    filterButtons.forEach(function(btn) {
+        if (btn.dataset.category === category) {
+            btn.classList.add('active');
+            btn.classList.remove('text-charcoal/50');
+            btn.classList.add('text-charcoal');
+            btn.style.borderColor = '#B8956A';
+        } else {
+            btn.classList.remove('active');
+            btn.classList.add('text-charcoal/50');
+            btn.classList.remove('text-charcoal');
+            btn.style.borderColor = '';
+        }
+    });
+    renderProducts(category);
+}
+
+// Filter button click handlers
+filterButtons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        setActiveFilter(btn.dataset.category);
+    });
+});
+
+// Intersection Observer for fade-in animations
+var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+document.querySelectorAll('.fade-in').forEach(function(el) {
+    observer.observe(el);
+});
+
+// Read category from URL params and initialize
+var urlParams = new URLSearchParams(window.location.search);
+var initialCategory = urlParams.get('category') || 'all';
+if (!['all', 'ceramics', 'candles', 'leather'].includes(initialCategory)) {
+    initialCategory = 'all';
+}
+setActiveFilter(initialCategory);
+
+// Mobile menu toggle
+var menuToggle = document.getElementById('menu-toggle');
+var mobileMenu = document.getElementById('mobile-menu');
+
+menuToggle.addEventListener('click', function() {
+    mobileMenu.classList.toggle('hidden');
+});
+
+function closeMobileMenu() {
+    mobileMenu.classList.add('hidden');
+}
+</script>
+
+</body>
+</html>
