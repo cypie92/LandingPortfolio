@@ -76,6 +76,60 @@
     .stagger-3 { transition-delay: 0.3s; }
     .stagger-4 { transition-delay: 0.4s; }
 
+    /* Scale-in animation variant */
+    .fade-in-scale {
+        opacity: 0;
+        transform: scale(0.92);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in-scale.visible {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    /* Button micro-interactions: scale + shadow */
+    .btn-hover {
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn-hover:hover {
+        transform: scale(1.03);
+        box-shadow: 0 6px 24px rgba(44, 44, 44, 0.12);
+    }
+    .btn-hover:active {
+        transform: scale(0.98);
+        box-shadow: 0 2px 8px rgba(44, 44, 44, 0.08);
+    }
+
+    /* Ken Burns effect for hero */
+    @keyframes kenburns {
+        0%   { transform: scale(1)    translate(0, 0); }
+        50%  { transform: scale(1.12) translate(-1.5%, -1%); }
+        100% { transform: scale(1.05) translate(0.5%, 0.5%); }
+    }
+    .hero-kenburns {
+        animation: kenburns 20s ease-in-out infinite alternate;
+        will-change: transform;
+    }
+
+    /* Scroll indicator bounce */
+    @keyframes scrollBounce {
+        0%, 100% { transform: translateY(0); opacity: 0.4; }
+        50%      { transform: translateY(6px); opacity: 0.8; }
+    }
+    .scroll-indicator {
+        animation: scrollBounce 2s ease-in-out infinite;
+    }
+
+    /* Ornament line grow on load */
+    @keyframes lineGrow {
+        from { width: 0; }
+        to   { width: 4rem; }
+    }
+    .ornament-line {
+        width: 0;
+        animation: lineGrow 1s ease-out 0.3s forwards;
+    }
+
     .parallax-hero {
         background-attachment: fixed;
         background-position: center;
@@ -123,8 +177,31 @@
         left: 0;
     }
 
+    .product-card {
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .product-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 40px rgba(44, 44, 44, 0.1);
+    }
     .product-card:hover .product-image {
         transform: scale(1.05);
+    }
+    .product-card .product-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(44, 44, 44, 0.35);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    .product-card:hover .product-overlay {
+        opacity: 1;
+    }
+    .product-card:hover .product-name {
+        color: #96744A;
     }
 
     .line-reveal {
@@ -143,6 +220,104 @@
     }
     .line-reveal:hover::after {
         width: 100%;
+    }
+
+    /* Textured background for brand statement */
+    .texture-paper {
+        position: relative;
+        background-color: #F5F0E8;
+    }
+    .texture-paper::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        opacity: 0.4;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
+        background-repeat: repeat;
+        background-size: 256px 256px;
+        pointer-events: none;
+    }
+    .texture-paper > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Angled section dividers */
+    .angle-divider {
+        position: relative;
+        z-index: 1;
+        height: 80px;
+        margin-top: -1px;
+        margin-bottom: -1px;
+        overflow: hidden;
+    }
+    .angle-divider svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Testimonial carousel */
+    .testimonial-track {
+        display: flex;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .testimonial-slide {
+        min-width: 100%;
+        opacity: 0.3;
+        transform: scale(0.95);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .testimonial-slide.active {
+        opacity: 1;
+        transform: scale(1);
+    }
+    .carousel-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(44, 44, 44, 0.2);
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.3s ease;
+        padding: 0;
+    }
+    .carousel-dot.active {
+        background: #B8956A;
+        transform: scale(1.25);
+    }
+    .carousel-arrow {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 1px solid rgba(44, 44, 44, 0.15);
+        background: transparent;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        color: #4A4A4A;
+    }
+    .carousel-arrow:hover {
+        background: #2C2C2C;
+        border-color: #2C2C2C;
+        color: #FAF8F5;
+        transform: scale(1.05);
+        box-shadow: 0 4px 16px rgba(44, 44, 44, 0.15);
+    }
+    .testimonial-avatar {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: #FAF8F5;
+        background: #2D4739;
     }
 
     /* Nav dual-mode: transparent over hero, solid on scroll */
@@ -195,7 +370,7 @@
             <a class="nav-link line-reveal text-xs font-medium uppercase tracking-widest-custom text-charcoal/70 hover:text-charcoal transition-colors pb-1" href="#contact">Contact</a>
         </div>
         <div class="flex items-center gap-5">
-            <a href="#bestsellers" class="nav-btn hidden md:inline-flex items-center justify-center border border-charcoal/20 px-6 py-2.5 text-xs font-medium uppercase tracking-widest-custom text-charcoal transition-all hover:bg-charcoal hover:text-cream">
+            <a href="#bestsellers" class="nav-btn btn-hover hidden md:inline-flex items-center justify-center border border-charcoal/20 px-6 py-2.5 text-xs font-medium uppercase tracking-widest-custom text-charcoal transition-all hover:bg-charcoal hover:text-cream">
                 Shop Now
             </a>
             <button class="nav-toggle flex md:hidden h-10 w-10 items-center justify-center text-charcoal" id="menu-toggle">
@@ -219,14 +394,14 @@
 <!-- Hero Section -->
 <section class="relative h-screen w-full overflow-hidden">
     <div class="absolute inset-0 z-0">
-        <div class="h-full w-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=1920&q=80'); filter: brightness(0.45) saturate(0.85);"></div>
+        <div class="hero-kenburns h-full w-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=1920&q=80'); filter: brightness(0.45) saturate(0.85);"></div>
     </div>
     <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/50 via-black/5 to-black/40"></div>
     <div class="relative z-20 flex h-full flex-col items-center justify-center px-6 text-center">
         <div class="fade-in mb-8 flex items-center gap-6 text-cream/60">
-            <span class="h-[1px] w-16 bg-brass-light"></span>
+            <span class="ornament-line h-[1px] bg-brass-light"></span>
             <span class="text-xs font-sans font-medium uppercase tracking-widest-custom text-brass-light">Handcrafted with Care</span>
-            <span class="h-[1px] w-16 bg-brass-light"></span>
+            <span class="ornament-line h-[1px] bg-brass-light"></span>
         </div>
         <h1 class="fade-in stagger-1 font-serif text-5xl font-500 leading-[1.1] text-white md:text-7xl lg:text-8xl max-w-4xl">
             Gifts That Tell<br/>
@@ -236,25 +411,32 @@
             Every piece in our collection is handcrafted by skilled artisans, made to be treasured for years to come.
         </p>
         <div class="fade-in stagger-3 mt-12 flex flex-col gap-4 sm:flex-row">
-            <a href="#collections" class="inline-flex items-center justify-center bg-brass px-10 py-4 text-xs font-sans font-medium uppercase tracking-widest-custom text-white transition-all hover:bg-brass-dark">
+            <a href="#collections" class="btn-hover inline-flex items-center justify-center bg-brass px-10 py-4 text-xs font-sans font-medium uppercase tracking-widest-custom text-white transition-all hover:bg-brass-dark">
                 Explore Collections
             </a>
-            <a href="#story" class="inline-flex items-center justify-center border border-white/30 px-10 py-4 text-xs font-sans font-medium uppercase tracking-widest-custom text-white transition-all hover:bg-white/10">
+            <a href="#story" class="btn-hover inline-flex items-center justify-center border border-white/30 px-10 py-4 text-xs font-sans font-medium uppercase tracking-widest-custom text-white transition-all hover:bg-white/10">
                 Our Story
             </a>
         </div>
     </div>
     <!-- Scroll indicator -->
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2">
+    <div class="scroll-indicator absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2">
         <span class="text-[10px] font-sans uppercase tracking-widest text-white/40">Scroll</span>
         <div class="h-10 w-[1px] bg-gradient-to-b from-white/40 to-transparent"></div>
     </div>
 </section>
 
+<!-- Divider: Hero → Brand Statement -->
+<div class="angle-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="0,80 1440,0 1440,80" fill="#F5F0E8"/>
+    </svg>
+</div>
+
 <!-- Brand Statement -->
-<section class="py-24 lg:py-32 bg-cream">
+<section class="py-24 lg:py-32 texture-paper">
     <div class="mx-auto max-w-4xl px-6 text-center">
-        <div class="fade-in">
+        <div class="fade-in-scale">
             <span class="inline-block h-12 w-[1px] bg-brass/50 mb-8"></span>
             <p class="font-serif text-2xl font-400 leading-relaxed text-charcoal/80 md:text-3xl lg:text-4xl">
                 We believe the most meaningful gifts are those made by human hands &mdash;
@@ -264,6 +446,14 @@
         </div>
     </div>
 </section>
+
+<!-- Divider: Brand Statement → Collections -->
+<div class="angle-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="0,0 1440,80 1440,0" fill="#F5F0E8"/>
+        <polygon points="0,0 0,80 1440,80" fill="#F2EDE7"/>
+    </svg>
+</div>
 
 <!-- Collections Section -->
 <section class="py-24 lg:py-32 bg-cream-dark" id="collections">
@@ -355,6 +545,14 @@
         </div>
     </div>
 </section>
+
+<!-- Divider: Collections → Our Story -->
+<div class="angle-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="0,0 1440,80 1440,0" fill="#F2EDE7"/>
+        <polygon points="0,0 0,80 1440,80" fill="#FAF8F5"/>
+    </svg>
+</div>
 
 <!-- Our Story / Craftsmanship Section -->
 <section class="py-24 lg:py-32 bg-cream" id="story">
@@ -533,6 +731,14 @@
     </div>
 </section>
 
+<!-- Divider: Process → Best Sellers -->
+<div class="angle-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="0,0 0,80 1440,0" fill="#2D4739"/>
+        <polygon points="0,80 1440,0 1440,80" fill="#FAF8F5"/>
+    </svg>
+</div>
+
 <!-- Best Sellers Section -->
 <section class="py-24 lg:py-32 bg-cream" id="bestsellers">
     <div class="mx-auto max-w-7xl px-6 lg:px-12">
@@ -552,9 +758,12 @@
             <div class="fade-in stagger-1 product-card group cursor-pointer">
                 <div class="relative aspect-[3/4] overflow-hidden bg-cream-dark mb-5">
                     <div class="product-image h-full w-full bg-cover bg-center transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1612198188760-aac12fac0d3b?w=600&q=80');"></div>
+                    <div class="product-overlay">
+                        <span class="text-xs font-sans font-medium uppercase tracking-widest-custom text-white border border-white/40 px-6 py-2.5">View Details</span>
+                    </div>
                 </div>
                 <div>
-                    <h3 class="font-serif text-lg font-500 text-charcoal group-hover:text-brass-dark transition-colors">Stoneware Mug Set</h3>
+                    <h3 class="product-name font-serif text-lg font-500 text-charcoal transition-colors">Stoneware Mug Set</h3>
                     <p class="text-xs text-stone-warm mt-1 mb-3 font-light">Hand-thrown, ash-glazed ceramic</p>
                     <div class="flex items-baseline justify-between">
                         <span class="font-sans text-sm font-medium text-charcoal">$68</span>
@@ -567,9 +776,12 @@
             <div class="fade-in stagger-2 product-card group cursor-pointer">
                 <div class="relative aspect-[3/4] overflow-hidden bg-cream-dark mb-5">
                     <div class="product-image h-full w-full bg-cover bg-center transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1602028915047-37269d1a73f7?w=600&q=80');"></div>
+                    <div class="product-overlay">
+                        <span class="text-xs font-sans font-medium uppercase tracking-widest-custom text-white border border-white/40 px-6 py-2.5">View Details</span>
+                    </div>
                 </div>
                 <div>
-                    <h3 class="font-serif text-lg font-500 text-charcoal group-hover:text-brass-dark transition-colors">Botanica Candle</h3>
+                    <h3 class="product-name font-serif text-lg font-500 text-charcoal transition-colors">Botanica Candle</h3>
                     <p class="text-xs text-stone-warm mt-1 mb-3 font-light">Cedar, sage, and wild lavender</p>
                     <div class="flex items-baseline justify-between">
                         <span class="font-sans text-sm font-medium text-charcoal">$42</span>
@@ -582,9 +794,12 @@
             <div class="fade-in stagger-3 product-card group cursor-pointer">
                 <div class="relative aspect-[3/4] overflow-hidden bg-cream-dark mb-5">
                     <div class="product-image h-full w-full bg-cover bg-center transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600&q=80');"></div>
+                    <div class="product-overlay">
+                        <span class="text-xs font-sans font-medium uppercase tracking-widest-custom text-white border border-white/40 px-6 py-2.5">View Details</span>
+                    </div>
                 </div>
                 <div>
-                    <h3 class="font-serif text-lg font-500 text-charcoal group-hover:text-brass-dark transition-colors">Leather Journal</h3>
+                    <h3 class="product-name font-serif text-lg font-500 text-charcoal transition-colors">Leather Journal</h3>
                     <p class="text-xs text-stone-warm mt-1 mb-3 font-light">Vegetable-tanned, hand-stitched</p>
                     <div class="flex items-baseline justify-between">
                         <span class="font-sans text-sm font-medium text-charcoal">$85</span>
@@ -597,9 +812,12 @@
             <div class="fade-in stagger-4 product-card group cursor-pointer">
                 <div class="relative aspect-[3/4] overflow-hidden bg-cream-dark mb-5">
                     <div class="product-image h-full w-full bg-cover bg-center transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=600&q=80');"></div>
+                    <div class="product-overlay">
+                        <span class="text-xs font-sans font-medium uppercase tracking-widest-custom text-white border border-white/40 px-6 py-2.5">View Details</span>
+                    </div>
                 </div>
                 <div>
-                    <h3 class="font-serif text-lg font-500 text-charcoal group-hover:text-brass-dark transition-colors">Linen Gift Bundle</h3>
+                    <h3 class="product-name font-serif text-lg font-500 text-charcoal transition-colors">Linen Gift Bundle</h3>
                     <p class="text-xs text-stone-warm mt-1 mb-3 font-light">Tea towel, apron, and napkin set</p>
                     <div class="flex items-baseline justify-between">
                         <span class="font-sans text-sm font-medium text-charcoal">$96</span>
@@ -611,6 +829,14 @@
     </div>
 </section>
 
+<!-- Divider: Best Sellers → Testimonials -->
+<div class="angle-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="0,0 1440,80 1440,0" fill="#FAF8F5"/>
+        <polygon points="0,0 0,80 1440,80" fill="#EDE8E0"/>
+    </svg>
+</div>
+
 <!-- Testimonials -->
 <section class="py-24 lg:py-32 bg-warm-ivory">
     <div class="mx-auto max-w-7xl px-6 lg:px-12">
@@ -619,59 +845,94 @@
             <h2 class="font-serif text-4xl font-500 text-charcoal md:text-5xl">From Our Customers</h2>
         </div>
 
-        <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-            <!-- Testimonial 1 -->
-            <div class="fade-in stagger-1 border-t border-charcoal/10 pt-8">
-                <div class="flex mb-4 gap-1">
-                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                </div>
-                <blockquote class="font-serif text-lg font-400 text-charcoal leading-relaxed mb-6 italic">
-                    "I gave the ceramic set to my mother for her birthday. She cried. You can feel the love in every piece &mdash; the weight, the texture, the imperfections that make it perfect."
-                </blockquote>
-                <div>
-                    <p class="text-sm font-medium text-charcoal">Emma R.</p>
-                    <p class="text-xs text-stone-warm">London, UK</p>
+        <!-- Carousel -->
+        <div class="fade-in relative mx-auto max-w-3xl" id="testimonial-carousel">
+            <div class="overflow-hidden">
+                <div class="testimonial-track" id="testimonial-track">
+                    <!-- Slide 1 -->
+                    <div class="testimonial-slide active px-4 md:px-12">
+                        <div class="text-center">
+                            <div class="flex justify-center mb-5 gap-1">
+                                <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            </div>
+                            <blockquote class="font-serif text-xl md:text-2xl font-400 text-charcoal leading-relaxed mb-8 italic">
+                                "I gave the ceramic set to my mother for her birthday. She cried. You can feel the love in every piece &mdash; the weight, the texture, the imperfections that make it perfect."
+                            </blockquote>
+                            <div class="flex items-center justify-center gap-4">
+                                <div class="testimonial-avatar">E</div>
+                                <div class="text-left">
+                                    <p class="text-sm font-medium text-charcoal">Emma R.</p>
+                                    <p class="text-xs text-stone-warm">London, UK</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="testimonial-slide px-4 md:px-12">
+                        <div class="text-center">
+                            <div class="flex justify-center mb-5 gap-1">
+                                <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            </div>
+                            <blockquote class="font-serif text-xl md:text-2xl font-400 text-charcoal leading-relaxed mb-8 italic">
+                                "The leather journal I ordered arrived in the most beautiful packaging. It felt like receiving a gift myself. The quality of the leather is outstanding &mdash; it will only get better with age."
+                            </blockquote>
+                            <div class="flex items-center justify-center gap-4">
+                                <div class="testimonial-avatar">D</div>
+                                <div class="text-left">
+                                    <p class="text-sm font-medium text-charcoal">David K.</p>
+                                    <p class="text-xs text-stone-warm">Melbourne, AU</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="testimonial-slide px-4 md:px-12">
+                        <div class="text-center">
+                            <div class="flex justify-center mb-5 gap-1">
+                                <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            </div>
+                            <blockquote class="font-serif text-xl md:text-2xl font-400 text-charcoal leading-relaxed mb-8 italic">
+                                "I ordered the curated gift set for my wife's anniversary. The attention to detail is remarkable. From the wrapping to the handwritten note &mdash; it felt deeply personal."
+                            </blockquote>
+                            <div class="flex items-center justify-center gap-4">
+                                <div class="testimonial-avatar">M</div>
+                                <div class="text-left">
+                                    <p class="text-sm font-medium text-charcoal">Marcus T.</p>
+                                    <p class="text-xs text-stone-warm">Toronto, CA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Testimonial 2 -->
-            <div class="fade-in stagger-2 border-t border-charcoal/10 pt-8">
-                <div class="flex mb-4 gap-1">
-                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <!-- Carousel Controls -->
+            <div class="flex items-center justify-center gap-6 mt-12">
+                <button class="carousel-arrow" id="carousel-prev" aria-label="Previous testimonial">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                </button>
+                <div class="flex items-center gap-3" id="carousel-dots">
+                    <button class="carousel-dot active" data-index="0" aria-label="Go to testimonial 1"></button>
+                    <button class="carousel-dot" data-index="1" aria-label="Go to testimonial 2"></button>
+                    <button class="carousel-dot" data-index="2" aria-label="Go to testimonial 3"></button>
                 </div>
-                <blockquote class="font-serif text-lg font-400 text-charcoal leading-relaxed mb-6 italic">
-                    "The leather journal I ordered arrived in the most beautiful packaging. It felt like receiving a gift myself. The quality of the leather is outstanding &mdash; it will only get better with age."
-                </blockquote>
-                <div>
-                    <p class="text-sm font-medium text-charcoal">David K.</p>
-                    <p class="text-xs text-stone-warm">Melbourne, AU</p>
-                </div>
-            </div>
-
-            <!-- Testimonial 3 -->
-            <div class="fade-in stagger-3 border-t border-charcoal/10 pt-8">
-                <div class="flex mb-4 gap-1">
-                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="h-4 w-4 text-brass" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                </div>
-                <blockquote class="font-serif text-lg font-400 text-charcoal leading-relaxed mb-6 italic">
-                    "I ordered the curated gift set for my wife's anniversary. The attention to detail is remarkable. From the wrapping to the handwritten note &mdash; it felt deeply personal."
-                </blockquote>
-                <div>
-                    <p class="text-sm font-medium text-charcoal">Marcus T.</p>
-                    <p class="text-xs text-stone-warm">Toronto, CA</p>
-                </div>
+                <button class="carousel-arrow" id="carousel-next" aria-label="Next testimonial">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
             </div>
         </div>
     </div>
@@ -687,10 +948,17 @@
     </div>
 </section>
 
+<!-- Divider: Quote → Newsletter -->
+<div class="angle-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="0,80 1440,0 1440,80" fill="#FAF8F5"/>
+    </svg>
+</div>
+
 <!-- Newsletter / CTA Section -->
 <section class="py-24 lg:py-32 bg-cream" id="contact">
     <div class="mx-auto max-w-2xl px-6 text-center">
-        <div class="fade-in">
+        <div class="fade-in-scale">
             <span class="text-xs font-sans font-medium uppercase tracking-widest-custom text-brass mb-4 block">Stay Connected</span>
             <h2 class="font-serif text-4xl font-500 text-charcoal md:text-5xl mb-6">Join Our World</h2>
             <p class="text-base font-light leading-relaxed text-charcoal-light mb-10">
@@ -702,7 +970,7 @@
                     placeholder="Your email address"
                     class="flex-1 border border-charcoal/15 bg-transparent px-5 py-3.5 text-sm font-sans text-charcoal placeholder:text-stone-warm/60 focus:border-brass focus:outline-none focus:ring-0 transition-colors"
                 />
-                <button type="submit" class="bg-charcoal px-8 py-3.5 text-xs font-sans font-medium uppercase tracking-widest-custom text-cream transition-all hover:bg-forest whitespace-nowrap">
+                <button type="submit" class="btn-hover bg-charcoal px-8 py-3.5 text-xs font-sans font-medium uppercase tracking-widest-custom text-cream transition-all hover:bg-forest whitespace-nowrap">
                     Subscribe
                 </button>
             </form>
@@ -790,7 +1058,7 @@ const observer = new IntersectionObserver((entries) => {
     rootMargin: '0px 0px -50px 0px'
 });
 
-document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
+document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .fade-in-scale').forEach(el => {
     observer.observe(el);
 });
 
@@ -869,6 +1137,50 @@ function closeMobileMenu() {
         applyNavTransparentState();
     }
 }
+
+// Testimonial Carousel
+(function() {
+    const track = document.getElementById('testimonial-track');
+    const slides = track.querySelectorAll('.testimonial-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+    const carousel = document.getElementById('testimonial-carousel');
+    let current = 0;
+    let autoplayTimer;
+
+    function goTo(index) {
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        current = index;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        slides.forEach((s, i) => s.classList.toggle('active', i === current));
+        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    function startAutoplay() {
+        autoplayTimer = setInterval(() => goTo(current + 1), 5000);
+    }
+
+    function resetAutoplay() {
+        clearInterval(autoplayTimer);
+        startAutoplay();
+    }
+
+    prevBtn.addEventListener('click', () => { goTo(current - 1); resetAutoplay(); });
+    nextBtn.addEventListener('click', () => { goTo(current + 1); resetAutoplay(); });
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            goTo(parseInt(dot.dataset.index));
+            resetAutoplay();
+        });
+    });
+
+    carousel.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
+    carousel.addEventListener('mouseleave', startAutoplay);
+
+    startAutoplay();
+})();
 </script>
 
 </body>
