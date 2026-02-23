@@ -136,7 +136,7 @@
         color: #2C2C2C;
     }
     #navbar.nav-transparent .nav-toggle {
-        color: #FFFFFF;
+        color: #D4BC97;
     }
 </style>
 </head>
@@ -686,17 +686,12 @@ let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.scrollY;
+    const menuOpen = !mobileMenu.classList.contains('hidden');
 
-    if (currentScroll > 80) {
-        navbar.style.backgroundColor = 'rgba(250, 248, 245, 0.97)';
-        navbar.style.backdropFilter = 'blur(12px)';
-        navbar.style.borderBottom = '1px solid rgba(44, 44, 44, 0.06)';
-        navbar.classList.remove('nav-transparent');
+    if (currentScroll > 80 || menuOpen) {
+        applyNavSolidState();
     } else {
-        navbar.style.backgroundColor = 'transparent';
-        navbar.style.backdropFilter = 'none';
-        navbar.style.borderBottom = '1px solid transparent';
-        navbar.classList.add('nav-transparent');
+        applyNavTransparentState();
     }
 
     lastScroll = currentScroll;
@@ -706,12 +701,36 @@ window.addEventListener('scroll', () => {
 const menuToggle = document.getElementById('menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
 
+function applyNavSolidState() {
+    navbar.style.backgroundColor = 'rgba(250, 248, 245, 0.97)';
+    navbar.style.backdropFilter = 'blur(12px)';
+    navbar.style.borderBottom = '1px solid rgba(44, 44, 44, 0.06)';
+    navbar.classList.remove('nav-transparent');
+}
+
+function applyNavTransparentState() {
+    navbar.style.backgroundColor = 'transparent';
+    navbar.style.backdropFilter = 'none';
+    navbar.style.borderBottom = '1px solid transparent';
+    navbar.classList.add('nav-transparent');
+}
+
 menuToggle.addEventListener('click', () => {
+    const isOpening = mobileMenu.classList.contains('hidden');
     mobileMenu.classList.toggle('hidden');
+
+    if (isOpening) {
+        applyNavSolidState();
+    } else if (window.scrollY <= 80) {
+        applyNavTransparentState();
+    }
 });
 
 function closeMobileMenu() {
     mobileMenu.classList.add('hidden');
+    if (window.scrollY <= 80) {
+        applyNavTransparentState();
+    }
 }
 </script>
 
